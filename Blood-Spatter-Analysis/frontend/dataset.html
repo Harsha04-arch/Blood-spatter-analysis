@@ -1,0 +1,384 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dataset Manager — dextahhh</title>
+  <link rel="stylesheet" href="css/main.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="layout">
+  <!-- Shared Sidebar Fragment — included inline in each page -->
+<!-- Shared Sidebar Fragment — included inline in each page -->
+<!-- Shared Sidebar Fragment — included inline in each page -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="sidebar-brand-text">
+      <h2>dextahhh</h2>
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Overview</div>
+    <a class="nav-item" href="dashboard.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      </span>
+      Dashboard
+    </a>
+    <a class="nav-item" href="cases.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+      </span>
+      Cases
+    </a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Analysis Pipeline</div>
+    <a class="nav-item" href="analysis.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </span>
+      New Analysis
+    </a>
+    <a class="nav-item" href="classification.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+      </span>
+      Classification
+    </a>
+    <a class="nav-item" href="droplets.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+      </span>
+      Droplet Analysis
+    </a>
+    <a class="nav-item" href="convergence.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+      </span>
+      2D Convergence
+    </a>
+    <a class="nav-item" href="reconstruction.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+      </span>
+      3D Point of Origin
+    </a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Model & Data</div>
+    <a class="nav-item" href="dataset.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+      </span>
+      Dataset Manager
+    </a>
+    <a class="nav-item" href="training.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+      </span>
+      Model Training
+    </a>
+    <a class="nav-item" href="reports.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+      </span>
+      Reports
+    </a>
+  </div>
+
+  <div class="sidebar-footer">
+    <div style="font-weight:700; color:var(--text-primary); margin-bottom:8px;">System Status</div>
+    <div style="margin-bottom:16px;">
+      <span id="sidebar-model-badge" class="badge badge-muted">Model: Checking...</span>
+    </div>
+    <a href="login.html" class="btn btn-outline" style="width:100%; border-radius:100px; padding:10px;">Log Out</a>
+  </div>
+</nav>
+<script>
+// Update model status badge in sidebar
+(async () => {
+  try {
+    const data = await API.get('/api/model/status');
+    const badge = document.getElementById('sidebar-model-badge');
+    if (badge) {
+      badge.textContent = data.trained ? 'Model Ready' : 'Not Trained';
+      badge.className = `badge ${data.trained ? 'badge-success' : 'badge-warning'}`;
+    }
+  } catch {}
+})();
+</script>
+
+
+
+  <div class="main">
+    <div class="topbar">
+      <div><div class="topbar-title">Dataset Manager</div><div class="topbar-sub">Module 1 — Dataset Ingestion & Statistics</div></div>
+    </div>
+    <div class="page-content">
+      <div class="grid-2">
+        <!-- Upload ZIP -->
+        <div class="card">
+          <div class="card-header"><div class="card-title">📦 Upload Dataset (ZIP)</div></div>
+          <div class="form-group">
+            <label class="form-label">Dataset Name</label>
+            <input type="text" class="form-control" id="ds-name" placeholder="e.g., dextahhh_Dataset_2024">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Random Seed (for reproducible split)</label>
+            <input type="number" class="form-control" id="ds-seed" value="42">
+          </div>
+          <div class="upload-zone" id="zip-zone">
+            <input type="file" id="zip-file" accept=".zip" onchange="previewZip(this)">
+            <div class="upload-icon">📦</div>
+            <div class="upload-text">Click or drag ZIP file here</div>
+            <div class="upload-hint">
+              ZIP must contain class subdirectories or flat images.<br>
+              Expected classes: Passive Drip, Transfer Smear, MVIS, HVIS
+            </div>
+          </div>
+          <div id="zip-preview" class="hidden mt-8">
+            <span class="badge badge-primary" id="zip-filename"></span>
+          </div>
+          <button class="btn btn-primary mt-12" onclick="uploadDataset()" id="btn-upload-ds">Upload & Ingest</button>
+          <div id="upload-ds-result" class="mt-12"></div>
+        </div>
+
+        <!-- Local folder ingest -->
+        <div class="card">
+          <div class="card-header"><div class="card-title">📂 Ingest Local Folder</div></div>
+          <div class="alert alert-info">
+            <span class="alert-icon">ℹ️</span>
+            <div>Enter a server-side absolute path to a folder containing class subdirectories.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Dataset Name</label>
+            <input type="text" class="form-control" id="local-ds-name" placeholder="e.g., My_Dataset">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Folder Path (server-side)</label>
+            <input type="text" class="form-control" id="local-ds-path" placeholder="C:\path\to\dataset">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Random Seed</label>
+            <input type="number" class="form-control" id="local-ds-seed" value="42">
+          </div>
+          <button class="btn btn-primary" onclick="ingestLocal()">Ingest Folder</button>
+          <div id="local-ds-result" class="mt-12"></div>
+        </div>
+      </div>
+
+      <!-- Dataset list -->
+      <div class="card mt-20">
+        <div class="card-header">
+          <div class="card-title"> Ingested Datasets</div>
+          <button class="btn btn-secondary btn-sm" onclick="loadDatasets()">↺ Refresh</button>
+        </div>
+        <div id="datasets-list">
+          <div class="empty-state"><div class="spinner spinner-lg" style="margin:0 auto"></div></div>
+        </div>
+      </div>
+
+      <!-- Selected dataset stats -->
+      <div class="card mt-20 hidden" id="stats-panel">
+        <div class="card-header">
+          <div class="card-title">📈 Dataset Statistics — <span id="stats-ds-name"></span></div>
+          <button class="btn btn-danger btn-sm" id="btn-delete-ds" onclick="deleteSelectedDataset()">Delete Dataset</button>
+        </div>
+        <div class="grid-4 mb-20" id="stats-cards"></div>
+        <div class="grid-2">
+          <div>
+            <div class="card-title mb-8 text-sm">Class Distribution</div>
+            <div class="chart-wrap" style="height:220px"><canvas id="class-dist-chart"></canvas></div>
+          </div>
+          <div>
+            <div class="card-title mb-8 text-sm">Train / Val / Test Split</div>
+            <div class="chart-wrap" style="height:220px"><canvas id="split-chart"></canvas></div>
+          </div>
+        </div>
+        <div id="stats-warnings" class="mt-12"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="toast-container"></div>
+<script src="js/main.js"></script>
+<script>
+let selectedDataset = null;
+let classDistChart = null, splitChart = null;
+
+function previewZip(input) {
+  const f = input.files[0];
+  if (!f) return;
+  document.getElementById('zip-preview').classList.remove('hidden');
+  document.getElementById('zip-filename').textContent = f.name;
+}
+
+async function uploadDataset() {
+  const f = document.getElementById('zip-file').files[0];
+  const name = document.getElementById('ds-name').value.trim();
+  const seed = document.getElementById('ds-seed').value;
+  if (!f) { toast('Select a ZIP file.', 'warning'); return; }
+  const fd = new FormData();
+  fd.append('file', f);
+  if (name) fd.append('dataset_name', name);
+  fd.append('seed', seed);
+  const btn = document.getElementById('btn-upload-ds');
+  btn.disabled = true; btn.textContent = 'Ingesting…';
+  document.getElementById('upload-ds-result').innerHTML = `<div class="d-flex align-center gap-8"><div class="spinner"></div> Uploading and ingesting…</div>`;
+  try {
+    const r = await API.post('/api/dataset/upload', fd, true);
+    renderIngestResult('upload-ds-result', r);
+    toast('Dataset ingested!', 'success');
+    await loadDatasets();
+  } catch(e) {
+    document.getElementById('upload-ds-result').innerHTML = `<div class="alert alert-danger"><span class="alert-icon">✕</span>${e.message || e.error || JSON.stringify(e)}</div>`;
+    toast('Ingestion failed', 'error');
+  }
+  btn.disabled = false; btn.textContent = 'Upload & Ingest';
+}
+
+async function ingestLocal() {
+  const path = document.getElementById('local-ds-path').value.trim();
+  const name = document.getElementById('local-ds-name').value.trim();
+  const seed = document.getElementById('local-ds-seed').value;
+  if (!path || !name) { toast('Path and name are required.', 'warning'); return; }
+  try {
+    const r = await API.post('/api/dataset/ingest', { source_path: path, dataset_name: name, seed: parseInt(seed) });
+    renderIngestResult('local-ds-result', r);
+    toast('Dataset ingested!', 'success');
+    await loadDatasets();
+  } catch(e) {
+    document.getElementById('local-ds-result').innerHTML = `<div class="alert alert-danger"><span class="alert-icon">✕</span>${e.message || e.error || JSON.stringify(e)}</div>`;
+    toast('Ingestion failed', 'error');
+  }
+}
+
+function renderIngestResult(id, r) {
+  document.getElementById(id).innerHTML = `
+    <div class="alert alert-success">
+      <span class="alert-icon">✓</span>
+      <div>
+        <strong>${r.dataset_name}</strong> ingested — ${r.total} images<br>
+        Train: ${r.splits?.train||0} · Val: ${r.splits?.val||0} · Test: ${r.splits?.test||0}
+        ${r.warnings?.length ? `<br><span class="text-warning"> ${r.warnings.length} warning(s)</span>` : ''}
+      </div>
+    </div>`;
+}
+
+async function loadDatasets() {
+  const el = document.getElementById('datasets-list');
+  try {
+    const data = await API.get('/api/dataset/list');
+    if (!data.datasets.length) {
+      el.innerHTML = `<div class="empty-state"><div class="empty-icon"></div><h3>No datasets</h3><p>Upload a ZIP or ingest a local folder.</p></div>`;
+      return;
+    }
+    el.innerHTML = `
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Total Images</th><th>Train</th><th>Val</th><th>Test</th><th>Classes</th><th></th></tr></thead>
+          <tbody>${data.datasets.map(d => `
+            <tr>
+              <td><strong>${d.name}</strong></td>
+              <td>${d.total || '?'}</td>
+              <td>${d.splits?.train || '?'}</td>
+              <td>${d.splits?.val || '?'}</td>
+              <td>${d.splits?.test || '?'}</td>
+              <td>${d.classes?.length || '?'}</td>
+              <td>
+                <div class="d-flex gap-8">
+                  <button class="btn btn-primary btn-sm" onclick="viewStats('${d.name}')">View Stats</button>
+                  <button class="btn btn-danger btn-sm" onclick="deleteDataset('${d.name}')">Delete</button>
+                </div>
+              </td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>`;
+  } catch(e) { el.innerHTML = `<div class="alert alert-danger"><span class="alert-icon">✕</span>Failed to load datasets.</div>`; }
+}
+
+async function viewStats(name) {
+  selectedDataset = name;
+  const panel = document.getElementById('stats-panel');
+  panel.classList.remove('hidden');
+  document.getElementById('stats-ds-name').textContent = name;
+  try {
+    const s = await API.get(`/api/dataset/statistics/${name}`);
+    // Stat cards
+    document.getElementById('stats-cards').innerHTML = `
+      <div class="stat-card"><div class="stat-label">Total Images</div><div class="stat-value">${s.total}</div></div>
+      <div class="stat-card"><div class="stat-label">Training</div><div class="stat-value">${s.splits?.train||0}</div></div>
+      <div class="stat-card"><div class="stat-label">Validation</div><div class="stat-value">${s.splits?.val||0}</div></div>
+      <div class="stat-card"><div class="stat-label">Test</div><div class="stat-value">${s.splits?.test||0}</div></div>`;
+
+    // Charts
+    const dist = s.class_distribution || {};
+    const labels = Object.keys(dist);
+    const vals   = Object.values(dist);
+    const colors = ['#3b82f6','#8b5cf6','#06b6d4','#10b981'];
+
+    if (classDistChart) classDistChart.destroy();
+    classDistChart = new Chart(document.getElementById('class-dist-chart'), {
+      type: 'doughnut',
+      data: { labels, datasets: [{ data: vals, backgroundColor: colors, borderWidth: 0 }] },
+      options: { plugins: { legend: { labels: { color: '#94a3b8', font: { size: 11 } } } }, cutout: '60%' },
+    });
+
+    const splits = s.splits || {};
+    if (splitChart) splitChart.destroy();
+    splitChart = new Chart(document.getElementById('split-chart'), {
+      type: 'bar',
+      data: {
+        labels: ['Train', 'Validation', 'Test'],
+        datasets: [{ data: [splits.train||0, splits.val||0, splits.test||0], backgroundColor: colors, borderRadius: 6, borderWidth: 0 }],
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: { y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' } }, x: { ticks: { color: '#94a3b8' }, grid: { display: false } } },
+      },
+    });
+
+    // Warnings
+    const warns = s.warnings || [];
+    if (warns.length) {
+      document.getElementById('stats-warnings').innerHTML = `
+        <div class="alert alert-warning"><span class="alert-icon"></span>
+          <div><strong>${warns.length} data quality warning(s):</strong><ul style="margin:8px 0 0 16px;font-size:12px">${warns.slice(0,5).map(w => `<li>${w}</li>`).join('')}</ul></div>
+        </div>`;
+    }
+    panel.scrollIntoView({ behavior: 'smooth' });
+  } catch(e) { toast('Failed to load stats', 'error'); }
+}
+
+async function deleteDataset(name) {
+  showModal({
+    title: '🗑️ Delete Dataset',
+    content: `<p>Delete dataset <strong>"${name}"</strong>? This will remove all files.</p>`,
+    confirmText: 'Delete', confirmClass: 'btn-danger',
+    onConfirm: async () => {
+      try {
+        await API.delete(`/api/dataset/delete/${name}`);
+        toast(`Dataset "${name}" deleted.`, 'success');
+        document.getElementById('stats-panel').classList.add('hidden');
+        await loadDatasets();
+      } catch(e) { toast(e.error || 'Delete failed', 'error'); }
+    },
+  });
+}
+
+function deleteSelectedDataset() {
+  if (selectedDataset) deleteDataset(selectedDataset);
+}
+
+loadDatasets();
+</script>
+</body>
+</html>

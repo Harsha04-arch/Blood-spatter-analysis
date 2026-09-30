@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DROP POINT — Bloodstain Pattern Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f4f7;--sf:#fff;--ink:#121c2b;--mute:#5b6778;--line:#d9dee6;--red:#b0202b;--navy:#0f1b2d;--head:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;--body:'Instrument Sans','Segoe UI',system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c131e;--sf:#131d2c;--ink:#e6ebf2;--mute:#93a0b3;--line:#243247;--red:#e0525c;--navy:#08101a}}
+:root[data-theme="dark"]{--bg:#0c131e;--sf:#131d2c;--ink:#e6ebf2;--mute:#93a0b3;--line:#243247;--red:#e0525c;--navy:#08101a}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--head);letter-spacing:-.02em;line-height:1.1;margin:0}
+button,input{font:inherit;color:inherit}a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+[hidden]{display:none!important}
+#splash{position:fixed;inset:0;z-index:100;background:var(--navy);color:#e8edf4;display:grid;place-content:center;text-align:center;transition:opacity .6s;cursor:pointer}
+#splash.out{opacity:0;pointer-events:none}
+.sp{position:relative;height:150px;display:grid;place-items:end center}
+.sd{width:44px;animation:fall .9s cubic-bezier(.5,0,.9,.5) both}
+.rg{position:absolute;bottom:2px;left:50%;width:30px;height:9px;margin-left:-15px;border:1.5px solid #e0525c;border-radius:50%;opacity:0;animation:rip 1.6s .85s ease-out both}
+.rg+.rg{animation-delay:1.1s}
+.wm{font-size:clamp(34px,7vw,64px);letter-spacing:.08em;font-weight:700}
+.wm span{display:inline-block;opacity:0;animation:up .6s both}
+.tg{color:#93a0b3;margin:8px 0 0;opacity:0;animation:up .6s 2s both;font-size:15px}
+@keyframes fall{from{transform:translateY(-140px);opacity:0}to{transform:none;opacity:1}}
+@keyframes rip{0%{transform:scale(.3);opacity:.9}100%{transform:scale(6);opacity:0}}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+#pb{position:fixed;top:0;left:0;height:2px;width:0;background:var(--red);z-index:60}
+nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid transparent;padding-top:env(safe-area-inset-top,0px);transition:border-color .3s}
+nav.s{border-color:var(--line)}nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font:700 17px var(--head);letter-spacing:.06em;text-decoration:none;display:flex;align-items:center;gap:10px;background:none;border:0;cursor:pointer}
+.logo i{width:12px;height:16px;background:var(--red);border-radius:50% 50% 50% 50%/62% 62% 38% 38%}
+.nl{display:flex;gap:20px;align-items:center;font-size:15px}.nl a,.nl button.t{color:var(--mute);text-decoration:none;background:none;border:0;cursor:pointer;padding:0}.nl a:hover,.nl button.t:hover{color:var(--ink)}
+.btn{display:inline-block;padding:12px 22px;background:var(--ink);color:var(--bg);border:1px solid var(--ink);border-radius:6px;text-decoration:none;font-weight:600;font-size:15px;cursor:pointer;transition:background .2s,transform .2s,border-color .2s}
+.btn:hover{background:var(--red);border-color:var(--red);transform:translateY(-1px)}.btn.o{background:none;color:var(--ink);border-color:var(--line)}.btn.o:hover{background:none;border-color:var(--ink)}
+.btn.sm{padding:8px 14px;font-size:14px}.btn:disabled{opacity:.4;pointer-events:none}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding:64px 0 96px;min-height:calc(100vh - 64px)}
+h1.h{font-size:clamp(40px,5.4vw,68px);font-weight:700}.lede{color:var(--mute);font-size:19px;max-width:30em;margin:22px 0 30px}
+.acts{display:flex;gap:12px;flex-wrap:wrap}.note{margin-top:32px;font-size:14px;color:var(--mute);max-width:32em;padding-left:14px;border-left:2px solid var(--red)}
+.fld{background:var(--sf);border:1px solid var(--line);border-radius:10px;padding:8px;margin:0}.fld svg{display:block;width:100%;height:auto}
+.fld figcaption{font-size:13px;color:var(--mute);padding:10px 12px 6px}
+.st{fill:var(--navy);stroke:var(--red);stroke-width:1.5}:root[data-theme="dark"] .st{fill:#7d1b25}
+.tl{stroke:var(--red);stroke-width:1;opacity:.55;fill:none}.org{fill:var(--red)}.ring{fill:none;stroke:var(--red);stroke-width:1.2;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{from{transform:scale(.6);opacity:.9}to{transform:scale(3);opacity:0}}
+section.sc{padding:100px 0;border-top:1px solid var(--line)}
+.sh{max-width:620px;margin-bottom:48px}h2{font-size:clamp(30px,3.6vw,46px);font-weight:700}.sh p{color:var(--mute);margin:14px 0 0}
+.fn{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.fn ol{list-style:none;margin:0;padding:0}.fn li{min-height:62vh;display:flex;flex-direction:column;justify-content:center;opacity:.32;transition:opacity .5s;padding-left:24px;border-left:2px solid var(--line)}
+.fn li.on{opacity:1;border-color:var(--red)}.fn h3{font-size:28px;margin-bottom:10px}.fn li p{color:var(--mute);margin:0;max-width:30em}
+.stgw{position:sticky;top:calc(50vh - 190px);align-self:start}
+.stg{background:var(--sf);border:1px solid var(--line);border-radius:12px;padding:16px}.stg svg{width:100%;display:block}
+.stg g{opacity:0;transition:opacity .6s}.stg g.on{opacity:1}.stg text{font:500 13px var(--body);fill:var(--mute)}
+.stg .a{stroke:var(--ink);fill:none;stroke-width:1.5}.stg .r{stroke:var(--red);fill:none;stroke-width:1.5}.stg .f{fill:var(--red)}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.flow div{padding:28px 28px 0 0}.flow h3{font-size:21px;margin-bottom:8px}.flow p{margin:0;color:var(--mute);font-size:15.5px}
+.cta{background:var(--navy);color:#e8edf4;border-radius:14px;padding:56px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.cta .btn{background:#e8edf4;color:#0f1b2d;border-color:#e8edf4}.cta p{color:#93a0b3;margin:8px 0 0}
+footer{padding:40px 0;border-top:1px solid var(--line);color:var(--mute);font-size:14px}footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .7s,transform .7s}.rv.on{opacity:1;transform:none}
+.card{background:var(--sf);border:1px solid var(--line);border-radius:12px;padding:32px}
+.au{max-width:440px;margin:72px auto}.au h2{font-size:30px;margin-bottom:22px}
+label.f{display:block;font-size:14px;font-weight:500;margin:0 0 16px}
+input[type=text],input[type=password]{display:block;width:100%;margin-top:6px;padding:12px 14px;background:var(--bg);border:1px solid var(--line);border-radius:6px}
+input:focus{outline:2px solid var(--red);outline-offset:1px}
+.err{color:var(--red);font-size:14px;min-height:22px;margin:0 0 10px}.lk{background:none;border:0;padding:0;color:var(--red);cursor:pointer;text-decoration:underline}.sw{font-size:14px;color:var(--mute);margin:18px 0 0}
+.pg{padding:48px 0 96px}.ph{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:32px}.ph h2{font-size:36px}.ph p{margin:6px 0 0;color:var(--mute)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+.cc{background:var(--sf);border:1px solid var(--line);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:6px;transition:border-color .2s,transform .2s}.cc:hover{border-color:var(--red);transform:translateY(-2px)}
+.cc h3{font-size:20px}.cc p{margin:0;color:var(--mute);font-size:14.5px}.cc .b{display:flex;gap:8px;margin-top:14px}
+.empty{grid-column:1/-1;border:1px dashed var(--line);border-radius:10px;padding:48px;text-align:center;color:var(--mute)}
+.up{border:1.5px dashed var(--line);border-radius:12px;padding:40px;text-align:center;background:var(--sf);cursor:pointer;transition:border-color .2s,background .2s;position:relative;overflow:hidden}
+.up:hover,.up.dg{border-color:var(--red)}.up b{font-family:var(--head);font-size:20px;display:block}.up span{color:var(--mute);font-size:14.5px}
+.scan:after{content:"";position:absolute;left:0;right:0;height:60px;top:-60px;background:linear-gradient(transparent,color-mix(in srgb,var(--red) 22%,transparent),transparent);animation:sc 1.1s linear infinite}
+@keyframes sc{to{top:100%}}
+.th{display:flex;gap:10px;margin:22px 0 6px;overflow-x:auto;padding-bottom:6px}.th button{flex:none;width:96px;height:68px;border:2px solid var(--line);border-radius:6px;padding:0;overflow:hidden;cursor:pointer;background:var(--sf)}.th button.on{border-color:var(--red)}.th img{width:100%;height:100%;object-fit:cover;display:block}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin:26px 0 24px}
+.tabs button{background:none;border:0;padding:12px 16px;cursor:pointer;color:var(--mute);border-bottom:2px solid transparent;margin-bottom:-1px;font-weight:500}.tabs button.on{color:var(--ink);border-color:var(--red)}
+.tabs .ck{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--line);margin-left:8px}.tabs .ck.d{background:var(--red)}
+.res{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start}.res canvas{width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:var(--sf);display:block;touch-action:none}
+.big{font:700 30px var(--head);margin:4px 0 6px}.tag{display:inline-block;font-size:13px;color:var(--mute);border:1px solid var(--line);border-radius:20px;padding:2px 12px}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:18px 0}.kv div{background:var(--bg);padding:12px 14px;font-size:13px;color:var(--mute)}.kv strong{display:block;font:700 21px var(--head);color:var(--ink);font-variant-numeric:tabular-nums}
+.tw{max-height:300px;overflow:auto;border:1px solid var(--line);border-radius:8px}table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}th,td{padding:8px 12px;text-align:right;border-bottom:1px solid var(--line)}th:first-child,td:first-child{text-align:left}th{position:sticky;top:0;background:var(--sf);font-weight:600}
+.small{font-size:13.5px;color:var(--mute)}.rp{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:40px;padding:22px 26px;background:var(--sf);border:1px solid var(--line);border-radius:12px}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:8px;font-size:14.5px;opacity:0;transition:.3s;z-index:90;pointer-events:none}#toast.on{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.nl a{display:none}.hero,.fn,.res{grid-template-columns:1fr;gap:32px}.hero{min-height:0;padding-top:32px}.stgw{display:none}.fn li{min-height:auto;padding:28px 0 28px 20px;opacity:1}.flow{grid-template-columns:1fr}.cta{padding:32px}section.sc{padding:64px 0}}
+@media(max-width:520px){.wrap{padding:0 20px}.card{padding:24px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation-duration:.01ms!important;animation-delay:0s!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="splash"><div class="sp"><svg class="sd" viewBox="0 0 60 80" aria-hidden="true"><path d="M30 4C30 4 8 34 8 52a22 22 0 0 0 44 0C52 34 30 4 30 4z" fill="#e0525c"/></svg><i class="rg"></i><i class="rg"></i></div><h1 class="wm" id="wm" aria-label="DROP POINT"></h1><p class="tg">Bloodstain pattern analysis</p></div>
+<div id="pb"></div>
+<nav id="nav"><div class="wrap"><button class="logo" data-go="home"><i></i>DROP POINT</button><div class="nl" id="nl"></div></div></nav>
+
+<main class="view" id="v-home">
+<div class="wrap hero"><div>
+<h1 class="h">Trace every stain back to its origin.</h1>
+<p class="lede">DROP POINT turns crime scene photographs into classified patterns, measured droplets, and an estimated point of origin in two and three dimensions.</p>
+<div class="acts"><button class="btn" data-go="cases">Open case files</button><a class="btn o" href="#fn">See what it does</a><a class="btn o" href="dashboard.html" title="Open Forensic Suite Dashboard">Workstation</a></div>
+<p class="note">For academic and research use. Every result is a computational estimate that a qualified forensic professional must validate.</p></div>
+<figure class="fld"><svg id="hero" viewBox="0 0 600 500" role="img" aria-label="Stains with trajectory lines converging on an estimated origin"></svg><figcaption>Trajectories traced back from each stain</figcaption></figure></div>
+
+<section class="sc" id="fn"><div class="wrap"><div class="sh rv"><h2>Four analyses, one case file</h2><p>Upload the scene photographs once. Each analysis builds on the one before it.</p></div>
+<div class="fn"><ol id="fl">
+<li><h3>Classification</h3><p>Names the spatter type (passive drip, transfer smear, medium or high velocity impact) and estimates the impact velocity class.</p></li>
+<li><h3>Droplet analysis</h3><p>Isolates every stain and measures its centroid, axes, area and aspect ratio. Impact angle follows from width over length.</p></li>
+<li><h3>2D convergence</h3><p>Traces elongated stains back along their long axis. Where the lines meet is the area of convergence, reported with its RMS error.</p></li>
+<li><h3>3D point of origin</h3><p>Combines each stain's direction and impact angle into rays, then solves for the point in space they pass closest to.</p></li></ol>
+<div class="stgw"><div class="stg"><svg viewBox="0 0 400 300" id="stg" role="img" aria-label="Illustration of the four analyses">
+<g class="on"><text x="40" y="52">Passive drip</text><rect x="40" y="60" width="300" height="24" rx="3" class="f"/><text x="40" y="112">Transfer smear</text><rect x="40" y="120" width="190" height="24" rx="3" fill="var(--line)"/><text x="40" y="172">Medium velocity</text><rect x="40" y="180" width="130" height="24" rx="3" fill="var(--line)"/><text x="40" y="232">High velocity</text><rect x="40" y="240" width="70" height="24" rx="3" fill="var(--line)"/></g>
+<g><ellipse cx="200" cy="140" rx="120" ry="44" transform="rotate(-18 200 140)" fill="var(--navy)" stroke="var(--red)" stroke-width="2"/><path class="r" d="M92 175L308 105M172 170L228 110" stroke-dasharray="4 4"/><text x="110" y="250">θ = arcsin( width / length )</text></g>
+<g><path class="r" d="M40 260L290 80M90 270L290 80M170 275L290 80M260 280L290 80M350 250L290 80M360 200L290 80"/><circle cx="290" cy="80" r="9" class="f"/><circle cx="290" cy="80" r="20" class="r"/></g>
+<g><path class="a" d="M60 240L200 280L350 220L210 180Z"/><path class="r" d="M100 250L215 60M200 270L215 60M320 225L215 60M240 200L215 60"/><path class="a" stroke-dasharray="3 4" d="M215 60L215 200"/><circle cx="215" cy="60" r="9" class="f"/><text x="228" y="56">origin</text></g></svg></div></div></div></div></section>
+
+<section class="sc"><div class="wrap"><div class="sh rv"><h2>From upload to report</h2></div><div class="flow rv">
+<div><h3>Create a case</h3><p>Sign in, open a case file, or start a new one for each scene.</p></div>
+<div><h3>Upload scene images</h3><p>Add as many photographs as you need. Each is analysed on arrival.</p></div>
+<div><h3>Review and export</h3><p>Check all four analyses, then download the report for the case.</p></div></div>
+<div class="cta rv" style="margin-top:72px"><div><h2 style="font-size:32px">Start a case file</h2><p>Create an account or sign in to continue.</p></div><button class="btn" data-go="cases">Open case files</button></div></div></section>
+<footer><div class="wrap"><span>DROP POINT</span><span>Academic and research use only. Not a substitute for expert validation.</span></div></footer></main>
+
+<main class="view wrap" id="v-auth" hidden><div class="card au"><h2 id="a-t"></h2>
+<label class="f">User ID<input type="text" id="a-u" autocomplete="username"></label>
+<label class="f">Password<input type="password" id="a-p" autocomplete="current-password"></label>
+<label class="f" id="a-c">Confirm password<input type="password" id="a-p2" autocomplete="new-password"></label>
+<p class="err" id="a-e" role="alert"></p><button class="btn" id="a-go" style="width:100%"></button><p class="sw" id="a-s"></p></div></main>
+
+<main class="view wrap pg" id="v-cases" hidden><div class="ph"><div><h2>Case files</h2><p id="cu"></p></div><button class="btn" id="nc">New case</button></div>
+<form class="card" id="cf" hidden style="margin-bottom:24px"><label class="f">Case name<input type="text" id="cn" required></label><label class="f">Location or reference (optional)<input type="text" id="cr"></label><div class="acts"><button class="btn" type="submit">Create case</button><button class="btn o" type="button" id="cx">Cancel</button></div></form>
+<div class="grid" id="cg"></div></main>
+
+<main class="view wrap pg" id="v-case" hidden><div class="ph"><div><button class="lk small" data-go="cases">Back to case files</button><h2 id="ct"></h2><p id="cs"></p></div></div>
+<div class="up" id="up" tabindex="0" role="button" aria-label="Upload scene images"><b>Upload scene images</b><span>Drop photographs here or select files. You can add several.</span><input type="file" id="fi" accept="image/*" multiple hidden></div>
+<div id="rs" hidden><div class="th" id="th"></div><div class="tabs" id="tb" role="tablist"></div><div id="pn"></div>
+<div class="rp"><div><b>Report</b><div class="small" id="rn"></div></div><button class="btn" id="dl">Download report</button></div></div></main>
+<div id="toast" role="status"></div>
+
+<script>
+(()=>{
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const LS={g(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},s(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}};
+const S={u:LS.g('dp_s',null),cases:[],cur:null,idx:0,tab:'cls',seen:{}},IM=new Map(),DV=new Map();
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches,esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const NS='http://www.w3.org/2000/svg',el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p&&p.appendChild(e);return e};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),3200)}
+
+/* splash */
+[...'DROP POINT'].forEach((c,i)=>{const s=document.createElement('span');s.textContent=c===' '?'\u00a0':c;s.style.animationDelay=(1.1+i*.08)+'s';$('#wm').appendChild(s)});
+let heroDone=false;
+const dismissSplash=()=>{
+  if($('#splash').classList.contains('out'))return;
+  $('#splash').classList.add('out');
+  setTimeout(()=>{$('#splash').hidden=true;hero()},350);
+};
+$('#splash').onclick=dismissSplash;
+setTimeout(dismissSplash,3000);
+
+/* views */
+function go(v){if((v==='cases'||v==='case')&&!S.u)v='auth';$$('.view').forEach(x=>x.hidden=x.id!=='v-'+v);scrollTo(0,0);cancelAnimationFrame(S.raf);
+ if(v==='auth')authUI();if(v==='cases')rCases();if(v==='case')rCase();navUI()}
+function navUI(){
+  $('#nl').innerHTML='<a href="#fn" data-go="home">Functions</a>'+
+    (S.u?'<button class="t" data-go="cases">Case files</button><span class="small">'+esc(S.u)+'</span><button class="btn sm o" id="so">Sign out</button>':'<button class="btn sm" data-go="cases">Sign in</button>')+
+    '<a href="dashboard.html" class="btn sm o" title="Open Forensic Suite Dashboard">Workstation</a>';
+  const so=$('#so');
+  so&&(so.onclick=()=>{S.u=null;LS.s('dp_s',null);go('home')});
+}
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g){if(g.tagName==='A'&&g.getAttribute('href')==='#fn'){$$('.view').forEach(x=>x.hidden=x.id!=='v-home');return}go(g.dataset.go)}});
+
+/* auth */
+let mode='in';const H=async(p,s)=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s+p)))].map(x=>x.toString(16).padStart(2,'0')).join('');
+function authUI(){const i=mode==='in';$('#a-t').textContent=i?'Sign in to your case files':'Create your account';$('#a-c').hidden=i;$('#a-go').textContent=i?'Sign in':'Create account';$('#a-e').textContent='';
+ $('#a-s').innerHTML=i?'New here? <button class="lk" data-m="up">Create an account</button>':'Already registered? <button class="lk" data-m="in">Sign in</button>'}
+$('#a-s').onclick=e=>{const m=e.target.dataset.m;if(m){mode=m;authUI()}};
+$('#a-go').onclick=async()=>{const u=$('#a-u').value.trim().toLowerCase(),p=$('#a-p').value,er=m=>$('#a-e').textContent=m,us=LS.g('dp_u',{});
+ if(u.length<3)return er('User ID must be at least 3 characters.');if(p.length<6)return er('Password must be at least 6 characters.');
+ if(mode==='up'){if(us[u])return er('That user ID is taken. Choose another.');if(p!==$('#a-p2').value)return er('Passwords do not match.');const s=crypto.randomUUID().slice(0,8);us[u]={s,h:await H(p,s)};LS.s('dp_u',us)}
+ else if(!us[u]||us[u].h!==await H(p,us[u].s))return er('User ID or password is incorrect.');
+ S.u=u;LS.s('dp_s',u);$('#a-p').value=$('#a-p2').value='';go('cases')};
+
+/* cases */
+const save=()=>LS.s('dp_c_'+S.u,S.cases);
+function rCases(){S.cases=LS.g('dp_c_'+S.u,[]);$('#cu').textContent='Signed in as '+S.u;
+ $('#cg').innerHTML=S.cases.length?S.cases.map(c=>`<article class="cc"><h3>${esc(c.name)}</h3><p>${esc(c.ref||'No reference')}</p><p>${new Date(c.at).toLocaleDateString()} · ${c.images.length} image${c.images.length===1?'':'s'}</p><div class="b"><button class="btn sm" data-o="${c.id}">Open</button><button class="btn sm o" data-d="${c.id}">Delete</button></div></article>`).join(''):'<div class="empty">No cases yet. Create a case to start uploading scene images.</div>'}
+$('#nc').onclick=()=>{$('#cf').hidden=false;$('#cn').focus()};$('#cx').onclick=()=>$('#cf').hidden=true;
+$('#cf').onsubmit=e=>{e.preventDefault();const c={id:Date.now().toString(36),name:$('#cn').value.trim(),ref:$('#cr').value.trim(),at:Date.now(),images:[]};S.cases.unshift(c);save();$('#cf').reset();$('#cf').hidden=true;open(c.id)};
+$('#cg').onclick=e=>{const o=e.target.dataset.o,d=e.target.dataset.d;if(o)open(o);if(d&&confirm('Delete this case and its images?')){S.cases=S.cases.filter(c=>c.id!==d);save();rCases()}};
+function open(id){S.cur=S.cases.find(c=>c.id===id);S.idx=0;S.tab='cls';S.seen={};go('case')}
+async function rCase(){const c=S.cur;$('#ct').textContent=c.name;$('#cs').textContent=c.ref||'';$('#rs').hidden=!c.images.length;if(c.images.length){await Promise.all(c.images.map(load));res()}}
+
+/* upload */
+const up=$('#up');up.onclick=()=>$('#fi').click();up.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();$('#fi').click()}};
+up.ondragover=e=>{e.preventDefault();up.classList.add('dg')};up.ondragleave=()=>up.classList.remove('dg');up.ondrop=e=>{e.preventDefault();up.classList.remove('dg');add(e.dataTransfer.files)};$('#fi').onchange=e=>add(e.target.files);
+const rd=u=>new Promise((r,j)=>{const i=new Image();i.onload=()=>r(i);i.onerror=j;i.src=u});
+async function shrink(f){const u=URL.createObjectURL(f),i=await rd(u),w=Math.min(720,i.naturalWidth),c=document.createElement('canvas');c.width=w;c.height=Math.round(i.naturalHeight*w/i.naturalWidth);c.getContext('2d').drawImage(i,0,0,c.width,c.height);URL.revokeObjectURL(u);return c.toDataURL('image/jpeg',.8)}
+async function add(fs){const c=S.cur;up.classList.add('scan');let n=0;
+ for(const f of fs){if(!f.type.startsWith('image/'))continue;try{const data=await shrink(f);const im={name:f.name,data};await load(im);im.r=analyse(im);c.images.push(im);n++;await new Promise(r=>setTimeout(r,350))}catch(e){toast('Could not read '+f.name)}}
+ up.classList.remove('scan');if(!save())toast('Storage is full. Delete images or cases to free space.');if(n){S.idx=c.images.length-1;$('#rs').hidden=false;res()}$('#fi').value=''}
+const load=im=>IM.has(im.data)?Promise.resolve(IM.get(im.data)):rd(im.data).then(i=>(IM.set(im.data,i),i));
+
+/* engine */
+function analyse(im){const img=IM.get(im.data),W=img.naturalWidth,Hh=img.naturalHeight,N=W*Hh,c=document.createElement('canvas');c.width=W;c.height=Hh;const x=c.getContext('2d');x.drawImage(img,0,0);
+ const d=x.getImageData(0,0,W,Hh).data,g=new Uint8Array(N),h=new Array(256).fill(0);for(let i=0;i<N;i++){g[i]=.299*d[4*i]+.587*d[4*i+1]+.114*d[4*i+2];h[g[i]]++}
+ let sum=0,sB=0,wB=0,mx=0,t=128;for(let k=0;k<256;k++)sum+=k*h[k];for(let k=0;k<256;k++){wB+=h[k];const wF=N-wB;if(!wB)continue;if(!wF)break;sB+=k*h[k];const a=sB/wB,b=(sum-sB)/wF,v=wB*wF*(a-b)*(a-b);if(v>mx){mx=v;t=k}}
+ let dk=0;for(let i=0;i<N;i++)if(g[i]<=t)dk++;const fg=dk<N/2,m=new Uint8Array(N);for(let i=0;i<N;i++)m[i]=(g[i]<=t)===fg?1:0;
+ const drops=[],st=[];for(let s=0;s<N;s++){if(m[s]!==1)continue;let n=0,sx=0,sy=0,sxx=0,syy=0,sxy=0;m[s]=2;st.push(s);
+  while(st.length){const p=st.pop(),px=p%W,py=(p/W)|0;n++;sx+=px;sy+=py;sxx+=px*px;syy+=py*py;sxy+=px*py;
+   if(px>0&&m[p-1]===1){m[p-1]=2;st.push(p-1)}if(px<W-1&&m[p+1]===1){m[p+1]=2;st.push(p+1)}if(py>0&&m[p-W]===1){m[p-W]=2;st.push(p-W)}if(py<Hh-1&&m[p+W]===1){m[p+W]=2;st.push(p+W)}}
+  if(n<15||n>N*.2)continue;const cx=sx/n,cy=sy/n,a=sxx/n-cx*cx+1/12,b=sxy/n-cx*cy,e=syy/n-cy*cy+1/12,mm=(a+e)/2,r=Math.hypot((a-e)/2,b),l1=mm+r,l2=Math.max(mm-r,.05),L=4*Math.sqrt(l1),Wd=4*Math.sqrt(l2);
+  drops.push({x:+cx.toFixed(1),y:+cy.toFixed(1),L:+L.toFixed(1),W:+Wd.toFixed(1),o:+(.5*Math.atan2(2*b,a-e)).toFixed(3),a:n,ar:+(L/Wd).toFixed(2),imp:+(Math.asin(Math.min(1,Wd/L))*180/Math.PI).toFixed(1)})}
+ drops.sort((p,q)=>q.a-p.a);return{W,H:Hh,drops:drops.slice(0,300)}}
+function derive(im){if(DV.has(im))return DV.get(im);const r=im.r,D=r.drops,n=D.length,o={n};
+ if(n){const A=D.map(d=>d.a).sort((p,q)=>p-q),med=A[n>>1],mar=D.reduce((s,d)=>s+d.ar,0)/n,tot=A.reduce((s,v)=>s+v,0),mi=D.reduce((s,d)=>s+d.imp,0)/n;
+  const type=n<8?(A[n-1]/tot>.6&&mar>2.2?'Transfer smear':'Passive drip'):med<60?'High velocity impact spatter':med<400?'Medium velocity impact spatter':mar<1.6?'Passive drip':'Transfer smear';
+  o.cls={type,vel:med<60?'High':med<400?'Medium':'Low',med,mar:+mar.toFixed(2),mi:+mi.toFixed(1)}}
+ const E=D.filter(d=>d.ar>=1.5),P=[];for(let i=0;i<E.length;i++)for(let j=i+1;j<E.length;j++){const p=E[i],q=E[j],ax=Math.cos(p.o),ay=Math.sin(p.o),bx=Math.cos(q.o),by=Math.sin(q.o),cr=ax*by-ay*bx;if(Math.abs(cr)<.17)continue;const t=((q.x-p.x)*by-(q.y-p.y)*bx)/cr,X=p.x+t*ax,Y=p.y+t*ay;if(X>-r.W&&X<2*r.W&&Y>-r.H&&Y<2*r.H)P.push({X,Y,w:Math.abs(cr)})}
+ if(E.length>=3&&P.length>=3){let K=P,cx=0,cy=0;const cen=(k,f)=>{let w=0,sx=0,sy=0;k.forEach(p=>{const q=f?f(p):p.w;w+=q;sx+=q*p.X;sy+=q*p.Y});cx=sx/w;cy=sy/w};cen(K);
+  for(let it=0;it<2;it++){const ds=K.map(p=>Math.hypot(p.X-cx,p.Y-cy)),sd=Math.sqrt(ds.reduce((s,v)=>s+v*v,0)/ds.length);const k2=K.filter((p,i)=>ds[i]<=2*sd);if(k2.length<3)break;K=k2;cen(K,p=>p.w/(1+Math.hypot(p.X-cx,p.Y-cy)))}
+  const rms=Math.sqrt(K.reduce((s,p)=>s+(p.X-cx)**2+(p.Y-cy)**2,0)/K.length);o.cv={x:cx,y:cy,rms,k:K.length,E};
+  const A=[[0,0,0],[0,0,0],[0,0,0]],B=[0,0,0];E.forEach(e=>{const f=Math.atan2(cy-e.y,cx-e.x),a=e.imp*Math.PI/180,v=[Math.cos(f)*Math.cos(a),Math.sin(f)*Math.cos(a),Math.sin(a)],ox=[e.x,e.y,0];
+   for(let i=0;i<3;i++)for(let j=0;j<3;j++){const M=(i===j?1:0)-v[i]*v[j];A[i][j]+=M;B[i]+=M*ox[j]}});
+  const det=m=>m[0][0]*(m[1][1]*m[2][2]-m[1][2]*m[2][1])-m[0][1]*(m[1][0]*m[2][2]-m[1][2]*m[2][0])+m[0][2]*(m[1][0]*m[2][1]-m[1][1]*m[2][0]),dA=det(A);
+  if(Math.abs(dA)>1e-9){const s=[0,1,2].map(c=>det(A.map((r2,i)=>r2.map((v,j)=>j===c?B[i]:v)))/dA);o.org={x:s[0],y:s[1],z:Math.max(0,s[2])}}}
+ DV.set(im,o);return o}
+
+/* drawing */
+function paint(cx,im,mode){const r=im.r,o=derive(im);cx.globalAlpha=.9;cx.drawImage(IM.get(im.data),0,0,r.W,r.H);cx.globalAlpha=1;
+ if(mode==='drp'||mode==='all'){cx.strokeStyle='#1f9d55';cx.lineWidth=1.6;r.drops.forEach(d=>{cx.beginPath();cx.ellipse(d.x,d.y,d.L/2+2,d.W/2+2,d.o,0,7);cx.stroke()})}
+ if((mode==='c2d'||mode==='all')&&o.cv){const R=Math.max(r.W,r.H)*2;cx.strokeStyle='rgba(176,32,43,.5)';cx.lineWidth=1.2;o.cv.E.forEach(e=>{cx.beginPath();cx.moveTo(e.x-Math.cos(e.o)*R,e.y-Math.sin(e.o)*R);cx.lineTo(e.x+Math.cos(e.o)*R,e.y+Math.sin(e.o)*R);cx.stroke()});
+  const p=o.cv;cx.fillStyle='#b0202b';cx.beginPath();cx.arc(p.x,p.y,6,0,7);cx.fill();cx.strokeStyle='#b0202b';cx.lineWidth=2;cx.beginPath();cx.arc(p.x,p.y,16,0,7);cx.stroke()}}
+const cvs=(im,mode)=>{const c=document.createElement('canvas');c.width=im.r.W;c.height=im.r.H;paint(c.getContext('2d'),im,mode);return c};
+
+/* results */
+const TABS=[['cls','Classification'],['drp','Droplet analysis'],['c2d','2D convergence'],['o3d','3D point of origin']],cur=()=>S.cur.images[S.idx];
+function res(){const c=S.cur;$('#th').innerHTML=c.images.map((im,i)=>`<button class="${i===S.idx?'on':''}" data-i="${i}" aria-label="Image ${i+1}: ${esc(im.name)}"><img src="${im.data}" alt=""></button>`).join('');pane()}
+$('#th').onclick=e=>{const b=e.target.closest('button');if(b){S.idx=+b.dataset.i;res()}};
+$('#tb').onclick=e=>{const b=e.target.closest('button');if(b){S.tab=b.dataset.t;pane()}};
+function pane(){cancelAnimationFrame(S.raf);const c=S.cur,im=cur(),o=derive(im),sn=S.seen[c.id]=S.seen[c.id]||{};sn[S.tab]=1;
+ $('#tb').innerHTML=TABS.map(([k,l])=>`<button role="tab" data-t="${k}" class="${k===S.tab?'on':''}">${l}<i class="ck ${sn[k]?'d':''}"></i></button>`).join('');
+ const ok=TABS.every(t=>sn[t[0]]);$('#dl').disabled=!ok;$('#rn').textContent=ok?'All four analyses reviewed. The report is ready.':'Review all four analyses to unlock the report ('+TABS.filter(t=>sn[t[0]]).length+' of 4).';
+ const P=$('#pn'),kv=a=>'<div class="kv">'+a.map(([l,v])=>`<div><strong>${v}</strong>${l}</div>`).join('')+'</div>',cn=(id)=>`<canvas id="${id}"></canvas>`;
+ if(S.tab==='cls'){const q=o.cls;P.innerHTML=`<div class="res">${cn('cv')}<div><span class="tag">Rule-based estimate</span><p class="big">${q?q.type:'No stains detected'}</p>${q?`<p class="small">Estimated impact velocity: <b>${q.vel}</b></p>`+kv([['droplets detected',o.n],['median area (px²)',q.med],['mean aspect ratio',q.mar],['mean impact angle',q.mi+'°']]):'<p class="small">Try an image with clearer contrast between stains and background.</p>'}</div></div>`;paint($('#cv').getContext('2d'),Object.assign(im),'none');fit('cv',im)}
+ else if(S.tab==='drp'){P.innerHTML=`<div class="res">${cn('cv')}<div><span class="tag">Computer vision measurement</span>${kv([['droplets',o.n],['elongated (AR ≥ 1.5)',im.r.drops.filter(d=>d.ar>=1.5).length]])}<div class="tw"><table><thead><tr><th>#</th><th>x</th><th>y</th><th>Length</th><th>Width</th><th>AR</th><th>Angle</th></tr></thead><tbody>${im.r.drops.slice(0,60).map((d,i)=>`<tr><td>${i+1}</td><td>${d.x|0}</td><td>${d.y|0}</td><td>${d.L}</td><td>${d.W}</td><td>${d.ar}</td><td>${d.imp}°</td></tr>`).join('')}</tbody></table></div></div></div>`;fit('cv',im,'drp')}
+ else if(S.tab==='c2d'){const v=o.cv;P.innerHTML=`<div class="res">${cn('cv')}<div><span class="tag">Geometric estimation</span>${v?`<p class="big">(${v.x.toFixed(0)}, ${v.y.toFixed(0)}) px</p>`+kv([['RMS error (px)',v.rms.toFixed(1)],['stains used',v.E.length],['intersections kept',v.k],['image size',im.r.W+'×'+im.r.H]]):'<p class="big">Not enough data</p><p class="small">Convergence needs at least three elongated stains (aspect ratio 1.5 or more) that are not parallel.</p>'}</div></div>`;fit('cv',im,'c2d')}
+ else{const g=o.org;P.innerHTML=`<div class="res">${cn('cv')}<div><span class="tag">Estimated point of origin</span>${g?`<p class="big">${g.z.toFixed(0)} px above the surface</p>`+kv([['x (px)',g.x.toFixed(0)],['y (px)',g.y.toFixed(0)],['height z (px)',g.z.toFixed(0)],['rays solved',o.cv.E.length]])+'<p class="small">Drag to rotate. Distances are in pixels unless a scale is supplied.</p>':'<p class="big">Not enough data</p><p class="small">A 3D origin needs a 2D convergence point first.</p>'}</div></div>`;if(g)view3(im,o)}
+}
+function fit(id,im,m){const c=$('#'+id);c.width=im.r.W;c.height=im.r.H;paint(c.getContext('2d'),im,m||'none')}
+function view3(im,o){const c=$('#cv'),x=c.getContext('2d'),r=im.r,Wd=760,Hd=500;c.width=Wd;c.height=Hd;let yaw=-.6,pit=.9,dr=0,lx=0,ly=0;const k=Wd/(r.W*1.5),g=o.org;
+ const st=getComputedStyle(document.documentElement),col=n=>st.getPropertyValue(n).trim()||'#888';
+ const pj=(X,Y,Z)=>{const a=X-r.W/2,b=r.H/2-Y,x1=a*Math.cos(yaw)-b*Math.sin(yaw),y1=a*Math.sin(yaw)+b*Math.cos(yaw);return[Wd/2+k*x1,Hd*.62-k*(Z*Math.cos(pit)+y1*Math.sin(pit))*(1)]};
+ c.onpointerdown=e=>{dr=1;lx=e.clientX;ly=e.clientY;c.setPointerCapture(e.pointerId)};c.onpointerup=()=>dr=0;c.onpointermove=e=>{if(!dr)return;yaw+=(e.clientX-lx)*.01;pit=Math.min(1.4,Math.max(.25,pit+(e.clientY-ly)*.006));lx=e.clientX;ly=e.clientY};
+ const draw=()=>{x.clearRect(0,0,Wd,Hd);const cs=[[0,0],[r.W,0],[r.W,r.H],[0,r.H]].map(p=>pj(p[0],p[1],0));x.strokeStyle=col('--line');x.lineWidth=1.5;x.beginPath();cs.forEach((p,i)=>i?x.lineTo(...p):x.moveTo(...p));x.closePath();x.stroke();
+  for(let i=1;i<6;i++){const a=pj(r.W*i/6,0,0),b=pj(r.W*i/6,r.H,0),c2=pj(0,r.H*i/6,0),d2=pj(r.W,r.H*i/6,0);x.beginPath();x.moveTo(...a);x.lineTo(...b);x.moveTo(...c2);x.lineTo(...d2);x.stroke()}
+  const O=pj(g.x,g.y,g.z),F=pj(g.x,g.y,0);x.strokeStyle='rgba(176,32,43,.45)';x.lineWidth=1;o.cv.E.forEach(e=>{const s=pj(e.x,e.y,0);x.beginPath();x.moveTo(...s);x.lineTo(...O);x.stroke()});
+  x.fillStyle=col('--ink');o.cv.E.forEach(e=>{const s=pj(e.x,e.y,0);x.beginPath();x.arc(s[0],s[1],3,0,7);x.fill()});
+  x.setLineDash([4,4]);x.strokeStyle=col('--mute');x.beginPath();x.moveTo(...F);x.lineTo(...O);x.stroke();x.setLineDash([]);x.fillStyle=col('--red');x.beginPath();x.arc(O[0],O[1],8,0,7);x.fill();x.font='600 14px sans-serif';x.fillText('Estimated origin',O[0]+14,O[1]+4);
+  if(!RM&&!dr)yaw+=.004;S.raf=requestAnimationFrame(draw)};draw()}
+
+/* report */
+$('#dl').onclick=async()=>{
+  const c=S.cur;
+  const sec=c.images.map((im,i)=>{
+    const o=derive(im),q=o.cls,v=o.cv,g=o.org;
+    return`<section><h2>Image ${i+1}: ${esc(im.name)}</h2><img src="${cvs(im,'all').toDataURL('image/jpeg',.8)}"><table><tr><th>Spatter type (rule-based estimate)</th><td>${q?q.type:'None detected'}</td></tr><tr><th>Impact velocity class</th><td>${q?q.vel:'-'}</td></tr><tr><th>Droplets (computer vision measurement)</th><td>${o.n}</td></tr><tr><th>Mean impact angle (geometric estimate)</th><td>${q?q.mi+'°':'-'}</td></tr><tr><th>2D convergence (geometric estimation)</th><td>${v?`(${v.x.toFixed(0)}, ${v.y.toFixed(0)}) px, RMS ${v.rms.toFixed(1)} px, ${v.E.length} stains`:'Insufficient data'}</td></tr><tr><th>3D point of origin (estimated)</th><td>${g?`x ${g.x.toFixed(0)}, y ${g.y.toFixed(0)}, height ${g.z.toFixed(0)} px`:'Insufficient data'}</td></tr></table></section>`;
+  }).join('');
+  const html=`<!DOCTYPE html><html><head><meta charset="utf-8"><title>DROP POINT report — ${esc(c.name)}</title><style>body{font:15px/1.6 Segoe UI,Arial,sans-serif;max-width:820px;margin:40px auto;padding:0 24px;color:#121c2b}h1{font-size:30px;margin:0}h2{font-size:19px;margin:36px 0 12px;border-top:1px solid #d9dee6;padding-top:22px}img{width:100%;border:1px solid #d9dee6}table{width:100%;border-collapse:collapse;margin-top:12px}th,td{text-align:left;padding:8px 10px;border-bottom:1px solid #d9dee6}th{width:52%;font-weight:600}.n{background:#f2f4f7;padding:14px 18px;border-left:3px solid #b0202b;margin-top:32px}@media print{section{page-break-inside:avoid}}</style></head><body><h1>DROP POINT</h1><p>Case: <b>${esc(c.name)}</b>${c.ref?' · '+esc(c.ref):''}<br>Prepared for ${esc(S.u)} on ${new Date().toLocaleString()}<br>Images analysed: ${c.images.length}</p>${sec}<p class="n">These results are computational estimates for academic and research use. They require validation by a qualified forensic professional. Distances are in pixels unless a scale is supplied.</p></body></html>`;
+  const filename='drop-point-'+c.name.replace(/[^a-z0-9]+/gi,'-').toLowerCase()+'.html';
+  const blob=new Blob([html],{type:'text/html'});
+  try{
+    if(window.claude && window.claude.use){
+      const dl=await window.claude.use('downloads');
+      if(dl && dl.save){
+        await dl.save({filename,data:blob});
+        toast('Report saved.');
+        return;
+      }
+    }
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;
+    a.download=filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    toast('Report downloaded.');
+  }catch(e){
+    if(e&&e.code!=='declined')toast('The report could not be saved.');
+  }
+};
+
+/* home motion */
+function hero(){if(heroDone)return;heroDone=true;const s=$('#hero'),O={x:330,y:105};let sd=7;const r=()=>(sd=sd*16807%2147483647)/2147483647,gl=el('g',{},s),gs=el('g',{},s),ls=[];
+ for(let i=0;i<15;i++){const a=Math.PI*(.12+.76*r()),d=120+r()*300,x=O.x+Math.cos(a)*d*1.15,y=O.y+Math.sin(a)*d*.95+30;if(x<40||x>560||y>470)continue;const an=Math.atan2(O.y-y,O.x-x)*180/Math.PI,l=13+d/26,w=l*(.28+r()*.3);
+  el('ellipse',{cx:x,cy:y,rx:l,ry:w,class:'st',transform:`rotate(${an} ${x} ${y})`},gs);const L=Math.hypot(O.x-x,O.y-y),ln=el('line',{x1:x,y1:y,x2:O.x,y2:O.y,class:'tl'},gl);ln.style.strokeDasharray=L;ln.style.strokeDashoffset=RM?0:L;ls.push([ln,i])}
+ const rg=el('circle',{cx:O.x,cy:O.y,r:8,class:'ring'},s);el('circle',{cx:O.x,cy:O.y,r:4.5,class:'org'},s);
+ if(!RM)requestAnimationFrame(()=>{ls.forEach(([l,i])=>{l.style.transition=`stroke-dashoffset 1.6s cubic-bezier(.2,.7,.2,1) ${i*70}ms`;l.style.strokeDashoffset=0});rg.style.animation='pulse 2.4s ease-out 2.2s infinite'})}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.2});$$('.rv').forEach(x=>io.observe(x));
+const items=$$('#fl li'),gs=$$('#stg g'),fo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=items.indexOf(e.target);items.forEach((x,j)=>x.classList.toggle('on',i===j));gs.forEach((x,j)=>x.classList.toggle('on',i===j))}}),{rootMargin:'-45% 0px -45% 0px'});items.forEach(x=>fo.observe(x));
+addEventListener('scroll',()=>{const h=document.documentElement,m=h.scrollHeight-innerHeight;$('#pb').style.width=(m>0?scrollY/m*100:0)+'%';$('#nav').classList.toggle('s',scrollY>8)},{passive:true});
+navUI();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Model Training — dextahhh</title>
+  <link rel="stylesheet" href="css/main.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="layout">
+  <!-- Shared Sidebar Fragment — included inline in each page -->
+<!-- Shared Sidebar Fragment — included inline in each page -->
+<!-- Shared Sidebar Fragment — included inline in each page -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="sidebar-brand-text">
+      <h2>dextahhh</h2>
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Overview</div>
+    <a class="nav-item" href="dashboard.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      </span>
+      Dashboard
+    </a>
+    <a class="nav-item" href="cases.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+      </span>
+      Cases
+    </a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Analysis Pipeline</div>
+    <a class="nav-item" href="analysis.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </span>
+      New Analysis
+    </a>
+    <a class="nav-item" href="classification.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+      </span>
+      Classification
+    </a>
+    <a class="nav-item" href="droplets.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+      </span>
+      Droplet Analysis
+    </a>
+    <a class="nav-item" href="convergence.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+      </span>
+      2D Convergence
+    </a>
+    <a class="nav-item" href="reconstruction.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+      </span>
+      3D Point of Origin
+    </a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Model & Data</div>
+    <a class="nav-item" href="dataset.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+      </span>
+      Dataset Manager
+    </a>
+    <a class="nav-item" href="training.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+      </span>
+      Model Training
+    </a>
+    <a class="nav-item" href="reports.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+      </span>
+      Reports
+    </a>
+  </div>
+
+  <div class="sidebar-footer">
+    <div style="font-weight:700; color:var(--text-primary); margin-bottom:8px;">System Status</div>
+    <div style="margin-bottom:16px;">
+      <span id="sidebar-model-badge" class="badge badge-muted">Model: Checking...</span>
+    </div>
+    <a href="login.html" class="btn btn-outline" style="width:100%; border-radius:100px; padding:10px;">Log Out</a>
+  </div>
+</nav>
+<script>
+// Update model status badge in sidebar
+(async () => {
+  try {
+    const data = await API.get('/api/model/status');
+    const badge = document.getElementById('sidebar-model-badge');
+    if (badge) {
+      badge.textContent = data.trained ? 'Model Ready' : 'Not Trained';
+      badge.className = `badge ${data.trained ? 'badge-success' : 'badge-warning'}`;
+    }
+  } catch {}
+})();
+</script>
+
+
+
+  <div class="main">
+    <div class="topbar">
+      <div><div class="topbar-title">Model Training</div><div class="topbar-sub">Module 2 — ResNet50 Transfer Learning</div></div>
+      <div class="topbar-right">
+        <div id="model-status-badge" class="badge badge-muted">Checking…</div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="grid-cols-2-1">
+        <!-- Config panel -->
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div class="card">
+            <div class="card-header"><div class="card-title"> Training Configuration</div></div>
+            <div class="form-group">
+              <label class="form-label">Dataset Name *</label>
+              <select class="form-control" id="train-ds-name">
+                <option value="">— Select Dataset —</option>
+              </select>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+              <div class="form-group">
+                <label class="form-label">Epochs</label>
+                <input type="number" class="form-control" id="train-epochs" value="20" min="1" max="200">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Batch Size</label>
+                <input type="number" class="form-control" id="train-batch" value="16" min="1" max="128">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Learning Rate</label>
+                <input type="number" class="form-control" id="train-lr" value="0.0001" step="0.00001" min="0.000001">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Image Size (px)</label>
+                <input type="number" class="form-control" id="train-imgsize" value="224" min="64" max="512" step="32">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Val Split (%)</label>
+                <input type="number" class="form-control" id="train-val-split" value="10" min="5" max="30">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Random Seed</label>
+                <input type="number" class="form-control" id="train-seed" value="42">
+              </div>
+            </div>
+            <div class="alert alert-info mt-8">
+              <span class="alert-icon"></span>
+              <div>
+                <strong>ResNet50 Transfer Learning</strong><br>
+                <span class="text-sm">Pretrained ImageNet weights → fine-tuned on your dataset. Training runs in background. Do not close this tab during training.</span>
+              </div>
+            </div>
+            <button class="btn btn-primary" id="btn-train" onclick="startTraining()"> Start Training</button>
+            <button class="btn btn-secondary hidden" id="btn-stop" onclick="stopTraining()"> Stop</button>
+          </div>
+
+          <!-- Progress -->
+          <div class="card" id="training-progress-card" style="display:none">
+            <div class="card-header">
+              <div class="card-title"> Training Progress</div>
+              <div class="d-flex align-center gap-8">
+                <div class="spinner" id="training-spinner"></div>
+                <span id="epoch-label" class="text-sm text-secondary">Epoch 0 / 0</span>
+              </div>
+            </div>
+            <div class="progress-bar-wrap mb-12">
+              <div class="progress-bar-fill" id="train-progress-bar" style="width:0%"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px" id="live-metrics">
+              <div class="result-panel"><div class="result-label">Train Loss</div><div class="result-value" id="m-train-loss">—</div></div>
+              <div class="result-panel"><div class="result-label">Val Loss</div><div class="result-value" id="m-val-loss">—</div></div>
+              <div class="result-panel"><div class="result-label">Train Acc</div><div class="result-value" id="m-train-acc">—</div></div>
+              <div class="result-panel"><div class="result-label">Val Acc</div><div class="result-value" id="m-val-acc">—</div></div>
+            </div>
+            <div class="chart-wrap mt-16" style="height:200px">
+              <canvas id="loss-chart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results panel -->
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="card">
+            <div class="card-title mb-12"> Final Metrics</div>
+            <div id="final-metrics">
+              <div class="empty-state" style="padding:32px 16px">
+                <div class="empty-icon"></div>
+                <h3>No training results yet</h3>
+                <p>Configure and start training to see metrics.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title mb-12"> Architecture</div>
+            <pre style="font-size:11px">ResNet50 (pretrained ImageNet)
+  └─ features: backbone layers
+  └─ dropout: 0.4
+  ├─ spatter_head: FC → 4 classes
+  └─ velocity_head: FC → 3 classes
+
+Spatter Classes:
+  • Passive Drip
+  • Transfer Smear
+  • Medium Velocity Impact Spatter
+  • High Velocity Impact Spatter
+
+Velocity Classes:
+  • Passive / Low Velocity
+  • Medium Velocity
+  • High Velocity</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="toast-container"></div>
+<script src="js/main.js"></script>
+<script>
+let lossChart = null;
+let pollInterval = null;
+
+async function init() {
+  // Load model status
+  try {
+    const s = await API.get('/api/model/status');
+    const badge = document.getElementById('model-status-badge');
+    badge.textContent = s.trained ? '✓ Model Trained' : ' Not Trained';
+    badge.className = `badge ${s.trained ? 'badge-success' : 'badge-warning'}`;
+    if (s.training_running) { startPoll(); showProgress(); }
+  } catch {}
+
+  // Load datasets
+  try {
+    const data = await API.get('/api/dataset/list');
+    const sel = document.getElementById('train-ds-name');
+    data.datasets.forEach(d => {
+      const o = document.createElement('option');
+      o.value = d.name; o.textContent = `${d.name} (${d.total || '?'} images)`;
+      sel.appendChild(o);
+    });
+  } catch {}
+}
+
+async function startTraining() {
+  const dsName = document.getElementById('train-ds-name').value;
+  if (!dsName) { toast('Select a dataset.', 'warning'); return; }
+  const payload = {
+    dataset_name: dsName,
+    epochs:     parseInt(document.getElementById('train-epochs').value),
+    batch_size: parseInt(document.getElementById('train-batch').value),
+    lr:         parseFloat(document.getElementById('train-lr').value),
+    image_size: parseInt(document.getElementById('train-imgsize').value),
+    val_split:  parseInt(document.getElementById('train-val-split').value) / 100,
+    seed:       parseInt(document.getElementById('train-seed').value),
+  };
+  try {
+    await API.post('/api/model/train', payload);
+    toast('Training started!', 'success');
+    showProgress();
+    startPoll();
+  } catch(e) {
+    toast(e.error || e.message || 'Failed to start training', 'error');
+  }
+}
+
+function showProgress() {
+  document.getElementById('training-progress-card').style.display = 'block';
+  document.getElementById('btn-train').disabled = true;
+}
+
+function startPoll() {
+  if (pollInterval) clearInterval(pollInterval);
+  pollInterval = setInterval(fetchProgress, 2500);
+}
+
+async function fetchProgress() {
+  try {
+    const data = await API.get('/api/model/train/progress');
+    if (!data.running && !data.progress.length && !data.result && !data.error) return;
+
+    const progress = data.progress || [];
+    if (progress.length) {
+      const last = progress[progress.length - 1];
+      const totalEpochs = last.total_epochs;
+      const pct = Math.round((last.epoch / totalEpochs) * 100);
+      document.getElementById('train-progress-bar').style.width = pct + '%';
+      document.getElementById('epoch-label').textContent = `Epoch ${last.epoch} / ${totalEpochs}`;
+      document.getElementById('m-train-loss').textContent = last.train_loss;
+      document.getElementById('m-val-loss').textContent   = last.val_loss;
+      document.getElementById('m-train-acc').textContent  = last.train_acc + '%';
+      document.getElementById('m-val-acc').textContent    = last.val_acc + '%';
+      updateLossChart(progress);
+    }
+
+    if (!data.running) {
+      clearInterval(pollInterval);
+      document.getElementById('training-spinner').style.display = 'none';
+      document.getElementById('btn-train').disabled = false;
+      if (data.error) {
+        toast('Training error: ' + data.error, 'error');
+      } else if (data.result) {
+        toast('Training complete!', 'success');
+        renderFinalMetrics(data.result);
+        document.getElementById('model-status-badge').textContent = '✓ Model Trained';
+        document.getElementById('model-status-badge').className = 'badge badge-success';
+      }
+    }
+  } catch {}
+}
+
+function updateLossChart(progress) {
+  const epochs = progress.map(p => p.epoch);
+  const trainLoss = progress.map(p => p.train_loss);
+  const valLoss   = progress.map(p => p.val_loss);
+  if (!lossChart) {
+    lossChart = new Chart(document.getElementById('loss-chart'), {
+      type: 'line',
+      data: {
+        labels: epochs,
+        datasets: [
+          { label: 'Train Loss', data: trainLoss, borderColor: '#3b82f6', tension: 0.4, pointRadius: 2, borderWidth: 2 },
+          { label: 'Val Loss',   data: valLoss,   borderColor: '#ef4444', tension: 0.4, pointRadius: 2, borderWidth: 2 },
+        ],
+      },
+      options: {
+        animation: false,
+        plugins: { legend: { labels: { color: '#94a3b8', font: { size: 11 } } } },
+        scales: {
+          y: { ticks: { color: '#94a3b8', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+          x: { ticks: { color: '#94a3b8', font: { size: 10 } }, grid: { display: false } },
+        },
+      },
+    });
+  } else {
+    lossChart.data.labels = epochs;
+    lossChart.data.datasets[0].data = trainLoss;
+    lossChart.data.datasets[1].data = valLoss;
+    lossChart.update();
+  }
+}
+
+function renderFinalMetrics(result) {
+  const m = result.metrics || {};
+  const cm = m.confusion_matrix || [];
+  const classes = m.classes || [];
+  document.getElementById('final-metrics').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+      <div class="result-panel"><div class="result-label">Accuracy</div><div class="result-value text-success">${fmtPct(m.accuracy)}</div></div>
+      <div class="result-panel"><div class="result-label">F1-Score</div><div class="result-value text-success">${fmtPct(m.f1_score)}</div></div>
+      <div class="result-panel"><div class="result-label">Precision</div><div class="result-value">${fmtPct(m.precision)}</div></div>
+      <div class="result-panel"><div class="result-label">Recall</div><div class="result-value">${fmtPct(m.recall)}</div></div>
+    </div>
+    <div class="text-sm text-muted mb-8">Confusion Matrix (Validation Set)</div>
+    <div style="overflow-x:auto">
+      <table style="font-size:11px">
+        <thead><tr><th>Pred→</th>${classes.map(c => `<th style="max-width:80px;overflow:hidden;text-overflow:ellipsis">${c.split(' ').pop()}</th>`).join('')}</tr></thead>
+        <tbody>${cm.map((row, i) => `
+          <tr>
+            <td style="font-size:10px;color:var(--text-muted)">${(classes[i]||'').split(' ').pop()}</td>
+            ${row.map((v, j) => `<td class="td-mono" style="background:${i===j?'rgba(16,185,129,0.2)':'rgba(239,68,68,'+(v>0?'0.1':'0')+')'}">${v}</td>`).join('')}
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+    <div class="text-muted text-xs mt-8">Best validation loss: ${result.best_val_loss}</div>
+  `;
+}
+
+init();
+</script>
+</body>
+</html>

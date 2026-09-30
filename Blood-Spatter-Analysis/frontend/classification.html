@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Classification — dextahhh</title>
+  <link rel="stylesheet" href="css/main.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="layout">
+  <!-- Shared Sidebar Fragment — included inline in each page -->
+<!-- Shared Sidebar Fragment — included inline in each page -->
+<!-- Shared Sidebar Fragment — included inline in each page -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="sidebar-brand-text">
+      <h2>dextahhh</h2>
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Overview</div>
+    <a class="nav-item" href="dashboard.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      </span>
+      Dashboard
+    </a>
+    <a class="nav-item" href="cases.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+      </span>
+      Cases
+    </a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Analysis Pipeline</div>
+    <a class="nav-item" href="analysis.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </span>
+      New Analysis
+    </a>
+    <a class="nav-item" href="classification.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+      </span>
+      Classification
+    </a>
+    <a class="nav-item" href="droplets.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+      </span>
+      Droplet Analysis
+    </a>
+    <a class="nav-item" href="convergence.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+      </span>
+      2D Convergence
+    </a>
+    <a class="nav-item" href="reconstruction.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+      </span>
+      3D Point of Origin
+    </a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Model & Data</div>
+    <a class="nav-item" href="dataset.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+      </span>
+      Dataset Manager
+    </a>
+    <a class="nav-item" href="training.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+      </span>
+      Model Training
+    </a>
+    <a class="nav-item" href="reports.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+      </span>
+      Reports
+    </a>
+  </div>
+
+  <div class="sidebar-footer">
+    <div style="font-weight:700; color:var(--text-primary); margin-bottom:8px;">System Status</div>
+    <div style="margin-bottom:16px;">
+      <span id="sidebar-model-badge" class="badge badge-muted">Model: Checking...</span>
+    </div>
+    <a href="login.html" class="btn btn-outline" style="width:100%; border-radius:100px; padding:10px;">Log Out</a>
+  </div>
+</nav>
+<script>
+// Update model status badge in sidebar
+(async () => {
+  try {
+    const data = await API.get('/api/model/status');
+    const badge = document.getElementById('sidebar-model-badge');
+    if (badge) {
+      badge.textContent = data.trained ? 'Model Ready' : 'Not Trained';
+      badge.className = `badge ${data.trained ? 'badge-success' : 'badge-warning'}`;
+    }
+  } catch {}
+})();
+</script>
+
+
+
+  <div class="main">
+    <div class="topbar">
+      <div><div class="topbar-title">Spatter Classification</div><div class="topbar-sub">Module 2 — ResNet50 AI Classifier</div></div>
+    </div>
+    <div class="page-content">
+      <div class="alert alert-warning mb-16">
+        <span class="alert-icon"></span>
+        <strong>AI-based classification/estimation — not a direct physical measurement.</strong>
+        Results require validation by qualified forensic professionals.
+      </div>
+      <div class="grid-cols-2-1">
+        <div>
+          <div class="card mb-20">
+            <div class="card-header"><div class="card-title">📤 Upload Image for Classification</div></div>
+            <div class="upload-zone">
+              <input type="file" id="cls-file" accept="image/*" onchange="previewCls(this)">
+              <div class="upload-icon"></div>
+              <div class="upload-text">Drop bloodstain image here</div>
+            </div>
+            <div id="cls-preview-wrap" class="hidden mt-12">
+              <img id="cls-preview" class="img-preview" alt="Preview" style="max-height:300px">
+            </div>
+            <div class="form-group mt-12">
+              <label class="form-label">Case ID (optional)</label>
+              <input type="text" class="form-control" id="cls-case-id" placeholder="Leave blank for standalone classification">
+            </div>
+            <button class="btn btn-primary mt-8" id="btn-cls" onclick="runCls()" disabled> Classify Image</button>
+          </div>
+
+          <!-- Results -->
+          <div class="card hidden" id="cls-result-card">
+            <div class="card-header">
+              <div class="card-title"> Classification Results</div>
+              <span class="badge badge-primary">AI Prediction</span>
+            </div>
+            <div id="cls-result"></div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="card">
+            <div class="card-title mb-12">📈 Probability Chart</div>
+            <div class="chart-wrap" style="height:240px">
+              <canvas id="prob-chart"></canvas>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title mb-8">🏷️ Spatter Classes</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:2.2">
+              <div><span class="badge badge-primary">PD</span> Passive Drip — Low-velocity, near-vertical impact</div>
+              <div><span class="badge badge-warning">TS</span> Transfer Smear — Contact transfer patterns</div>
+              <div><span class="badge badge-muted">MVIS</span> Medium Velocity Impact Spatter</div>
+              <div><span class="badge badge-danger">HVIS</span> High Velocity Impact Spatter</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title mb-8">⚡ Velocity Categories</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:2">
+              <div>🟢 Passive / Low Velocity (&lt; 5 ft/s)</div>
+              <div>🟡 Medium Velocity (5–25 ft/s)</div>
+              <div>🔴 High Velocity (&gt; 25 ft/s)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="toast-container"></div>
+<script src="js/main.js"></script>
+<script>
+let probChart = null;
+
+function previewCls(input) {
+  if (!input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('cls-preview').src = e.target.result;
+    document.getElementById('cls-preview-wrap').classList.remove('hidden');
+    document.getElementById('btn-cls').disabled = false;
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+async function runCls() {
+  const f = document.getElementById('cls-file').files[0];
+  if (!f) { toast('Select an image.', 'warning'); return; }
+  const caseId = document.getElementById('cls-case-id').value.trim();
+  const fd = new FormData();
+  fd.append('file', f);
+  if (caseId) fd.append('case_id', caseId);
+  document.getElementById('btn-cls').disabled = true;
+  document.getElementById('btn-cls').innerHTML = '<div class="spinner" style="display:inline-block"></div> Classifying…';
+  try {
+    const r = await API.post('/api/classify', fd, true);
+    document.getElementById('cls-result-card').classList.remove('hidden');
+    renderResult(r);
+    Store.setAnalysis('classification', r);
+    toast('Classification complete!', 'success');
+  } catch(e) {
+    if (e.error === 'model_unavailable') {
+      toast('Model not trained. Train the model first.', 'error');
+      document.getElementById('cls-result-card').classList.remove('hidden');
+      document.getElementById('cls-result').innerHTML = `
+        <div class="alert alert-danger">
+          <span class="alert-icon"></span>
+          <div>Model checkpoint not found.<br>
+          <a href="training.html" class="btn btn-warning btn-sm mt-8">Train Model →</a></div>
+        </div>`;
+    } else {
+      toast(e.message || e.error || 'Classification failed', 'error');
+    }
+  }
+  document.getElementById('btn-cls').disabled = false;
+  document.getElementById('btn-cls').textContent = ' Classify Image';
+}
+
+function renderResult(r) {
+  const s = r.spatter; const v = r.velocity;
+  document.getElementById('cls-result').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      <div class="result-panel">
+        <div class="result-label">Predicted Spatter Type</div>
+        <div class="result-value" style="font-size:16px;line-height:1.3">${s.predicted_type}</div>
+        <div class="result-conf">${fmtPct(s.confidence)} confidence</div>
+        <div class="result-disclaimer">${s.label}</div>
+      </div>
+      <div class="result-panel">
+        <div class="result-label">Impact Velocity Category</div>
+        <div class="result-value" style="font-size:16px;line-height:1.3">${v.category}</div>
+        <div class="result-conf">${fmtPct(v.confidence)} confidence</div>
+        <div class="result-disclaimer">${v.label}</div>
+      </div>
+    </div>
+    <div class="mb-12">
+      <div class="text-sm text-muted mb-8">Top ${s.top_predictions.length} Predictions</div>
+      ${s.top_predictions.map((p, i) => `
+        <div class="conf-row">
+          <div class="conf-row-label">${i+1}. ${p.class}</div>
+          <div class="conf-bar-wrap"><div class="conf-bar" style="width:${p.probability}%;background:${['#3b82f6','#8b5cf6','#06b6d4'][i]}"></div></div>
+          <div class="conf-pct">${fmtPct(p.probability)}</div>
+        </div>`).join('')}
+    </div>
+    <div class="text-muted text-xs">${r.disclaimer}</div>
+  `;
+  updateProbChart(s.all_probabilities);
+}
+
+function updateProbChart(probs) {
+  const labels = Object.keys(probs);
+  const vals   = Object.values(probs);
+  const colors = ['#3b82f6','#8b5cf6','#06b6d4','#10b981'];
+  if (probChart) probChart.destroy();
+  probChart = new Chart(document.getElementById('prob-chart'), {
+    type: 'bar',
+    data: { labels, datasets: [{ data: vals, backgroundColor: colors, borderRadius: 6, borderWidth: 0 }] },
+    options: {
+      indexAxis: 'y',
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { max: 100, ticks: { color: '#94a3b8', callback: v => v + '%' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+        y: { ticks: { color: '#94a3b8', font: { size: 10 } }, grid: { display: false } },
+      },
+    },
+  });
+}
+</script>
+</body>
+</html>

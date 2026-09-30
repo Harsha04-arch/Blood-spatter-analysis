@@ -1,0 +1,390 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Droplet Analysis — dextahhh</title>
+  <link rel="stylesheet" href="css/main.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="layout">
+  <!-- Shared Sidebar Fragment — included inline in each page -->
+<!-- Shared Sidebar Fragment — included inline in each page -->
+<!-- Shared Sidebar Fragment — included inline in each page -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="sidebar-brand-text">
+      <h2>dextahhh</h2>
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Overview</div>
+    <a class="nav-item" href="dashboard.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      </span>
+      Dashboard
+    </a>
+    <a class="nav-item" href="cases.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+      </span>
+      Cases
+    </a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Analysis Pipeline</div>
+    <a class="nav-item" href="analysis.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </span>
+      New Analysis
+    </a>
+    <a class="nav-item" href="classification.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+      </span>
+      Classification
+    </a>
+    <a class="nav-item" href="droplets.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+      </span>
+      Droplet Analysis
+    </a>
+    <a class="nav-item" href="convergence.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+      </span>
+      2D Convergence
+    </a>
+    <a class="nav-item" href="reconstruction.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+      </span>
+      3D Point of Origin
+    </a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Model & Data</div>
+    <a class="nav-item" href="dataset.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+      </span>
+      Dataset Manager
+    </a>
+    <a class="nav-item" href="training.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+      </span>
+      Model Training
+    </a>
+    <a class="nav-item" href="reports.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+      </span>
+      Reports
+    </a>
+  </div>
+
+  <div class="sidebar-footer">
+    <div style="font-weight:700; color:var(--text-primary); margin-bottom:8px;">System Status</div>
+    <div style="margin-bottom:16px;">
+      <span id="sidebar-model-badge" class="badge badge-muted">Model: Checking...</span>
+    </div>
+    <a href="login.html" class="btn btn-outline" style="width:100%; border-radius:100px; padding:10px;">Log Out</a>
+  </div>
+</nav>
+<script>
+// Update model status badge in sidebar
+(async () => {
+  try {
+    const data = await API.get('/api/model/status');
+    const badge = document.getElementById('sidebar-model-badge');
+    if (badge) {
+      badge.textContent = data.trained ? 'Model Ready' : 'Not Trained';
+      badge.className = `badge ${data.trained ? 'badge-success' : 'badge-warning'}`;
+    }
+  } catch {}
+})();
+</script>
+
+
+
+  <div class="main">
+    <div class="topbar">
+      <div><div class="topbar-title">Droplet Analysis</div><div class="topbar-sub">Module 3 — OpenCV Detection & Impact Angle Engine</div></div>
+      <div class="topbar-right">
+        <button class="btn btn-secondary btn-sm" onclick="exportCSV()" id="btn-csv" disabled>⬇ Export CSV</button>
+        <button class="btn btn-secondary btn-sm" onclick="exportJSON()" id="btn-json" disabled>⬇ Export JSON</button>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="grid-cols-2-1">
+        <!-- Left -->
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <!-- Upload & Config -->
+          <div class="card">
+            <div class="card-header"><div class="card-title"> Detection Parameters</div></div>
+            <div class="upload-zone">
+              <input type="file" id="drop-file" accept="image/*" onchange="previewDrop(this)">
+              <div class="upload-icon"></div>
+              <div class="upload-text">Drop bloodstain image here</div>
+            </div>
+            <div id="drop-preview-wrap" class="hidden mt-12">
+              <img id="drop-preview" class="img-preview" style="max-height:200px" alt="Preview">
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px">
+              <div class="form-group" style="margin:0">
+                <label class="form-label">Min Area (px²)</label>
+                <input type="number" class="form-control" id="d-min-area" value="50">
+              </div>
+              <div class="form-group" style="margin:0">
+                <label class="form-label">Max Area (px²)</label>
+                <input type="number" class="form-control" id="d-max-area" value="50000">
+              </div>
+              <div class="form-group" style="margin:0">
+                <label class="form-label">Threshold (0=Otsu)</label>
+                <input type="number" class="form-control" id="d-thresh" value="0" min="0" max="255">
+              </div>
+              <div class="form-group" style="margin:0">
+                <label class="form-label">Kernel Size</label>
+                <input type="number" class="form-control" id="d-kernel" value="3" min="1" max="15" step="2">
+              </div>
+            </div>
+            <button class="btn btn-primary mt-12" id="btn-extract" onclick="runExtract()" disabled> Extract Droplets</button>
+            <div class="alert alert-info mt-12">
+              <span class="alert-icon">ℹ️</span>
+              <div class="text-sm">Impact angle: <code>θ = arcsin(W/L)</code> where W=minor axis, L=major axis.<br>
+              Accuracy depends on image quality and surface calibration.</div>
+            </div>
+          </div>
+
+          <!-- Table -->
+          <div class="card hidden" id="droplet-table-card">
+            <div class="card-header">
+              <div class="card-title"> Droplet Measurements</div>
+              <div class="search-wrap">
+                <span class="search-icon"></span>
+                <input class="form-control" id="droplet-search" placeholder="Search…" style="width:160px" oninput="filterTable(this.value)">
+              </div>
+            </div>
+            <div class="table-wrap" style="max-height:400px;overflow-y:auto">
+              <table>
+                <thead>
+                  <tr>
+                    <th onclick="sortBy('id')"># ↕</th>
+                    <th onclick="sortBy('cx')">X ↕</th>
+                    <th onclick="sortBy('cy')">Y ↕</th>
+                    <th onclick="sortBy('major_axis')">Major ↕</th>
+                    <th onclick="sortBy('minor_axis')">Minor ↕</th>
+                    <th onclick="sortBy('area')">Area ↕</th>
+                    <th onclick="sortBy('aspect_ratio')">AR ↕</th>
+                    <th onclick="sortBy('impact_angle')">Angle ↕</th>
+                    <th>Valid</th>
+                  </tr>
+                </thead>
+                <tbody id="droplet-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <!-- Image panels -->
+          <div class="card">
+            <div class="card-title mb-12"> Image Analysis</div>
+            <div class="tabs" data-tabs>
+              <button class="tab-btn active" data-tab="dp-annotated">Annotated</button>
+              <button class="tab-btn" data-tab="dp-thresh">Threshold</button>
+              <button class="tab-btn" data-tab="dp-morph">Morphology</button>
+            </div>
+            <div id="dp-annotated" class="tab-panel active">
+              <div class="img-panel" style="min-height:200px;display:flex;align-items:center;justify-content:center">
+                <div id="ann-img-wrap" class="text-muted text-sm">Run extraction to see annotated image</div>
+              </div>
+            </div>
+            <div id="dp-thresh" class="tab-panel">
+              <div class="img-panel" style="min-height:200px;display:flex;align-items:center;justify-content:center">
+                <div id="thresh-img-wrap" class="text-muted text-sm">—</div>
+              </div>
+            </div>
+            <div id="dp-morph" class="tab-panel">
+              <div class="img-panel" style="min-height:200px;display:flex;align-items:center;justify-content:center">
+                <div id="morph-img-wrap" class="text-muted text-sm">—</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Summary stats -->
+          <div class="card hidden" id="summary-card">
+            <div class="card-title mb-12">📈 Summary Statistics</div>
+            <div id="summary-stats"></div>
+            <div class="chart-wrap mt-12" style="height:180px">
+              <canvas id="angle-chart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="toast-container"></div>
+<script src="js/main.js"></script>
+<script>
+let allDroplets = [];
+let angleChart = null;
+let sortCol = 'id', sortAsc = true;
+
+function previewDrop(input) {
+  if (!input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('drop-preview').src = e.target.result;
+    document.getElementById('drop-preview-wrap').classList.remove('hidden');
+    document.getElementById('btn-extract').disabled = false;
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+async function runExtract() {
+  const f = document.getElementById('drop-file').files[0];
+  if (!f) { toast('Select an image.', 'warning'); return; }
+  const fd = new FormData();
+  fd.append('file', f);
+  fd.append('min_area',    document.getElementById('d-min-area').value);
+  fd.append('max_area',    document.getElementById('d-max-area').value);
+  fd.append('threshold',   document.getElementById('d-thresh').value);
+  fd.append('kernel_size', document.getElementById('d-kernel').value);
+  const btn = document.getElementById('btn-extract');
+  btn.disabled = true; btn.innerHTML = '<div class="spinner" style="display:inline-block"></div> Extracting…';
+  try {
+    const r = await API.post('/api/droplets/extract', fd, true);
+    if (r.status === 'no_droplets') {
+      toast(r.message, 'warning');
+    } else {
+      allDroplets = r.droplets || [];
+      Store.setAnalysis('droplets', r);
+      renderImages(r);
+      renderTable(allDroplets);
+      renderSummary(r.summary);
+      document.getElementById('btn-csv').disabled = false;
+      document.getElementById('btn-json').disabled = false;
+      toast(`${allDroplets.length} droplets detected!`, 'success');
+    }
+  } catch(e) { toast(e.message || e.error || 'Extraction failed', 'error'); }
+  btn.disabled = false; btn.textContent = ' Extract Droplets';
+}
+
+function renderImages(r) {
+  if (r.annotated_image) document.getElementById('ann-img-wrap').innerHTML = `<img src="${r.annotated_image}" style="width:100%">`;
+  if (r.threshold_image) document.getElementById('thresh-img-wrap').innerHTML = `<img src="${r.threshold_image}" style="width:100%">`;
+  if (r.morphology_image) document.getElementById('morph-img-wrap').innerHTML = `<img src="${r.morphology_image}" style="width:100%">`;
+}
+
+function renderTable(drops) {
+  document.getElementById('droplet-table-card').classList.remove('hidden');
+  document.getElementById('droplet-tbody').innerHTML = drops.map(d => `
+    <tr>
+      <td class="td-mono">#${d.id}</td>
+      <td class="td-mono">${fmtNum(d.cx,0)}</td>
+      <td class="td-mono">${fmtNum(d.cy,0)}</td>
+      <td class="td-mono">${fmtNum(d.major_axis)}</td>
+      <td class="td-mono">${fmtNum(d.minor_axis)}</td>
+      <td class="td-mono">${fmtNum(d.area,0)}</td>
+      <td class="td-mono">${fmtNum(d.aspect_ratio,2)}</td>
+      <td class="td-mono ${d.angle_valid ? 'text-success' : 'text-warning'}">${d.angle_valid ? fmtNum(d.impact_angle)+'°' : 'N/A'}</td>
+      <td>${d.angle_valid ? '<span class="badge badge-success">✓</span>' : `<span class="badge badge-warning" title="${d.angle_warning||''}"></span>`}</td>
+    </tr>
+  `).join('');
+}
+
+function renderSummary(s) {
+  document.getElementById('summary-card').classList.remove('hidden');
+  document.getElementById('summary-stats').innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+      <div class="result-panel"><div class="result-label">Count</div><div class="result-value">${s.count}</div></div>
+      <div class="result-panel"><div class="result-label">Avg Angle</div><div class="result-value">${fmtNum(s.avg_angle)}°</div></div>
+      <div class="result-panel"><div class="result-label">Avg Area</div><div class="result-value">${fmtNum(s.avg_area,0)}</div></div>
+    </div>`;
+
+  // Angle distribution histogram
+  const validAngles = allDroplets.filter(d => d.angle_valid && d.impact_angle != null).map(d => d.impact_angle);
+  const bins = Array(9).fill(0);
+  validAngles.forEach(a => { const b = Math.min(8, Math.floor(a / 10)); bins[b]++; });
+  const labels = ['0-10°','10-20°','20-30°','30-40°','40-50°','50-60°','60-70°','70-80°','80-90°'];
+
+  if (angleChart) angleChart.destroy();
+  angleChart = new Chart(document.getElementById('angle-chart'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{ data: bins, backgroundColor: '#3b82f6', borderRadius: 4, borderWidth: 0, label: 'Count' }],
+    },
+    options: {
+      plugins: { legend: { display: false }, title: { display: true, text: 'Impact Angle Distribution', color: '#94a3b8', font: { size: 11 } } },
+      scales: {
+        y: { ticks: { color: '#94a3b8', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+        x: { ticks: { color: '#94a3b8', font: { size: 9 } }, grid: { display: false } },
+      },
+    },
+  });
+}
+
+function filterTable(q) {
+  const filtered = allDroplets.filter(d =>
+    String(d.id).includes(q) ||
+    String(d.impact_angle).includes(q) ||
+    String(d.area).includes(q)
+  );
+  renderTable(filtered);
+}
+
+function sortBy(col) {
+  if (sortCol === col) sortAsc = !sortAsc;
+  else { sortCol = col; sortAsc = true; }
+  const sorted = [...allDroplets].sort((a, b) => {
+    const av = a[col] ?? -Infinity, bv = b[col] ?? -Infinity;
+    return sortAsc ? av - bv : bv - av;
+  });
+  renderTable(sorted);
+}
+
+function exportCSV() {
+  if (!allDroplets.length) return;
+  const header = 'id,cx,cy,width,height,area,perimeter,major_axis,minor_axis,aspect_ratio,orientation,impact_angle,angle_valid';
+  const rows = allDroplets.map(d =>
+    [d.id,d.cx,d.cy,d.width,d.height,d.area,d.perimeter,d.major_axis,d.minor_axis,d.aspect_ratio,d.orientation,d.impact_angle,d.angle_valid].join(',')
+  );
+  const blob = new Blob([header + '\n' + rows.join('\n')], { type: 'text/csv' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'droplets.csv'; a.click();
+}
+
+function exportJSON() {
+  if (!allDroplets.length) return;
+  const blob = new Blob([JSON.stringify(allDroplets, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'droplets.json'; a.click();
+}
+
+// Load stored data if available
+const stored = Store.getAnalysis('droplets');
+if (stored?.droplets?.length) {
+  allDroplets = stored.droplets;
+  renderTable(allDroplets);
+  renderSummary(stored.summary);
+  document.getElementById('btn-csv').disabled = false;
+  document.getElementById('btn-json').disabled = false;
+}
+initTabs(document.querySelector('[data-tabs]'));
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>dextahhh — Forensic Analysis Suite</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    body { background: #FFFFFF; }
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 120px 20px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+      width: 120vw; height: 120vh;
+      background: radial-gradient(circle at center, rgba(3, 125, 214, 0.05) 0%, transparent 60%);
+      z-index: 0; pointer-events: none;
+    }
+    .top-nav {
+      position: absolute; top: 0; left: 0; right: 0;
+      padding: 24px 48px; display: flex; justify-content: space-between; align-items: center;
+      z-index: 10;
+    }
+    .top-brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 20px; letter-spacing: -0.03em; color: var(--text-primary); }
+    .top-brand svg { width: 32px; height: 32px; fill: var(--accent); }
+    
+    .hero-content { position: relative; z-index: 1; max-width: 900px; width: 100%; display: flex; flex-direction: column; align-items: center; }
+    
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 800; line-height: 1.1;
+      color: var(--text-primary);
+      margin-bottom: 24px; letter-spacing: -0.04em;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      font-size: 18px; color: var(--text-secondary); font-weight: 500;
+      max-width: 600px; margin-bottom: 48px; line-height: 1.6;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    
+    .feature-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;
+      margin-top: 100px; width: 100%; max-width: 1000px; position: relative; z-index: 1;
+      text-align: left;
+    }
+    .feature-card-clean {
+      background: #F8F9FA;
+      border-radius: 32px; padding: 40px;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+    .feature-card-clean:hover { background: #FFFFFF; box-shadow: var(--shadow-lg); border-color: var(--border); transform: translateY(-4px); }
+    .f-icon { width: 48px; height: 48px; border-radius: 16px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+    .f-icon svg { width: 24px; height: 24px; fill: var(--accent); stroke: var(--accent); }
+    .f-title { font-size: 20px; font-weight: 800; color: var(--text-primary); margin-bottom: 12px; letter-spacing: -0.02em; }
+    .f-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.6; font-weight: 500; }
+    
+    @media (max-width: 768px) { .feature-grid { grid-template-columns: 1fr; } .top-nav { padding: 24px; } }
+  </style>
+</head>
+<body>
+
+<div class="top-nav">
+  <div class="top-brand">
+    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    dextahhh
+  </div>
+  <div>
+    <a href="login.html" class="btn btn-outline" style="border-radius: 100px; border: 2px solid var(--border); font-weight: 700;">Log In</a>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>The Next Generation of <span>Bloodstain Analysis</span></h1>
+    <p>
+      Leverage ResNet50 deep learning and deterministic geometric point of origin estimation in one unified, clinical platform.
+    </p>
+    <div class="hero-actions">
+      <a href="login.html" class="btn btn-primary btn-lg">Get Started</a>
+      <a href="dataset.html" class="btn btn-secondary btn-lg">View Documentation</a>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card-clean">
+        <div class="f-icon">
+          <!-- Database icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+        </div>
+        <div class="f-title">Automated Ingestion</div>
+        <div class="f-desc">Seamlessly import thousands of images with automated hashing, deduplication, and pipeline batching.</div>
+      </div>
+      <div class="feature-card-clean">
+        <div class="f-icon">
+          <!-- AI icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+        </div>
+        <div class="f-title">Neural Classification</div>
+        <div class="f-desc">Utilize dual-head ResNet50 architectures for probabilistic spatter type and impact velocity identification.</div>
+      </div>
+      <div class="feature-card-clean">
+        <div class="f-icon">
+          <!-- Droplet CV icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8M8 12h8"></path></svg>
+        </div>
+        <div class="f-title">Computer Vision</div>
+        <div class="f-desc">Extract exact stain vectors and calculate impact angles utilizing dynamic Otsu thresholds and ellipse fitting.</div>
+      </div>
+      <div class="feature-card-clean">
+        <div class="f-icon">
+          <!-- 3D icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+        </div>
+        <div class="f-title">Spatial Estimation</div>
+        <div class="f-desc">Compute least-squares ray intersections for precise 3D point of origin estimation, rendered in an interactive viewer.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

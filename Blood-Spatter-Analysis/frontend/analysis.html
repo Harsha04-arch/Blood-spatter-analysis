@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Analysis Pipeline — dextahhh</title>
+  <link rel="stylesheet" href="css/main.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="layout">
+  <!-- Shared Sidebar Fragment — included inline in each page -->
+<!-- Shared Sidebar Fragment — included inline in each page -->
+<!-- Shared Sidebar Fragment — included inline in each page -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="sidebar-brand-text">
+      <h2>dextahhh</h2>
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Overview</div>
+    <a class="nav-item" href="dashboard.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      </span>
+      Dashboard
+    </a>
+    <a class="nav-item" href="cases.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+      </span>
+      Cases
+    </a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Analysis Pipeline</div>
+    <a class="nav-item" href="analysis.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </span>
+      New Analysis
+    </a>
+    <a class="nav-item" href="classification.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+      </span>
+      Classification
+    </a>
+    <a class="nav-item" href="droplets.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+      </span>
+      Droplet Analysis
+    </a>
+    <a class="nav-item" href="convergence.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+      </span>
+      2D Convergence
+    </a>
+    <a class="nav-item" href="reconstruction.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+      </span>
+      3D Point of Origin
+    </a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Model & Data</div>
+    <a class="nav-item" href="dataset.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+      </span>
+      Dataset Manager
+    </a>
+    <a class="nav-item" href="training.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+      </span>
+      Model Training
+    </a>
+    <a class="nav-item" href="reports.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+      </span>
+      Reports
+    </a>
+  </div>
+
+  <div class="sidebar-footer">
+    <div style="font-weight:700; color:var(--text-primary); margin-bottom:8px;">System Status</div>
+    <div style="margin-bottom:16px;">
+      <span id="sidebar-model-badge" class="badge badge-muted">Model: Checking...</span>
+    </div>
+    <a href="login.html" class="btn btn-outline" style="width:100%; border-radius:100px; padding:10px;">Log Out</a>
+  </div>
+</nav>
+<script>
+// Update model status badge in sidebar
+(async () => {
+  try {
+    const data = await API.get('/api/model/status');
+    const badge = document.getElementById('sidebar-model-badge');
+    if (badge) {
+      badge.textContent = data.trained ? 'Model Ready' : 'Not Trained';
+      badge.className = `badge ${data.trained ? 'badge-success' : 'badge-warning'}`;
+    }
+  } catch {}
+})();
+</script>
+
+
+
+
+  <div class="main">
+    <div class="topbar">
+      <div><div class="topbar-title">Analysis Pipeline</div><div class="topbar-sub" id="case-title">No case selected</div></div>
+      <div class="topbar-right">
+        <select class="form-control" id="case-select" style="width:200px" onchange="selectCase(this.value)">
+          <option value="">— Select Case —</option>
+        </select>
+        <a href="cases.html" class="btn btn-secondary btn-sm">Manage Cases</a>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <!-- Step wizard -->
+      <div class="steps mb-20" id="step-wizard">
+        <div class="step active" data-step="1"><div class="step-circle">1</div><div class="step-label">Upload</div></div>
+        <div class="step-connector"></div>
+        <div class="step" data-step="2"><div class="step-circle">2</div><div class="step-label">Classify</div></div>
+        <div class="step-connector"></div>
+        <div class="step" data-step="3"><div class="step-circle">3</div><div class="step-label">Droplets</div></div>
+        <div class="step-connector"></div>
+        <div class="step" data-step="4"><div class="step-circle">4</div><div class="step-label">Angles</div></div>
+        <div class="step-connector"></div>
+        <div class="step" data-step="5"><div class="step-circle">5</div><div class="step-label">2D Conv.</div></div>
+        <div class="step-connector"></div>
+        <div class="step" data-step="6"><div class="step-circle">6</div><div class="step-label">3D Origin</div></div>
+        <div class="step-connector"></div>
+        <div class="step" data-step="7"><div class="step-circle">7</div><div class="step-label">Report</div></div>
+      </div>
+
+      <div class="grid-cols-2-1">
+        <!-- Left: Steps -->
+        <div style="display:flex;flex-direction:column;gap:20px">
+
+          <!-- Step 1: Upload -->
+          <div class="card" id="panel-upload">
+            <div class="card-header"><div class="card-title">Step 1 — Upload Image</div></div>
+            <div class="upload-zone" id="upload-zone">
+              <input type="file" id="img-file" accept="image/*" onchange="previewImage(this)">
+              <div class="upload-icon">[ ^ ]</div>
+              <div class="upload-text">Click or drag bloodstain image here</div>
+              <div class="upload-hint">PNG, JPG, TIFF, BMP — Max 50 MB</div>
+            </div>
+            <div id="img-preview-wrap" class="hidden mt-12">
+              <img id="img-preview" class="img-preview" alt="Preview">
+              <div class="d-flex gap-8 mt-8">
+                <button class="btn btn-primary" onclick="uploadImage()">Upload Image</button>
+                <button class="btn btn-secondary" onclick="clearImage()">Clear</button>
+              </div>
+            </div>
+            <div id="upload-status" class="mt-8"></div>
+          </div>
+
+          <!-- Step 2: Classify -->
+          <div class="card" id="panel-classify">
+            <div class="card-header">
+              <div class="card-title">Step 2 — Spatter Classification</div>
+              <span class="badge badge-muted">Module 2</span>
+            </div>
+            <div class="alert alert-info">
+              <span class="alert-icon">ℹ️</span>
+              <div>AI-based classification/estimation — not a direct physical measurement.</div>
+            </div>
+            <button class="btn btn-primary" id="btn-classify" onclick="runClassify()" disabled>Run Classification</button>
+            <div id="classify-result" class="mt-16"></div>
+          </div>
+
+          <!-- Step 3+4: Droplets -->
+          <div class="card" id="panel-droplets">
+            <div class="card-header">
+              <div class="card-title">Step 3+4 — Droplet Extraction & Impact Angles</div>
+              <span class="badge badge-muted">Module 3</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px">
+              <div class="form-group" style="margin:0">
+                <label class="form-label">Min Area (px²)</label>
+                <input type="number" class="form-control" id="min-area" value="50" min="1">
+              </div>
+              <div class="form-group" style="margin:0">
+                <label class="form-label">Max Area (px²)</label>
+                <input type="number" class="form-control" id="max-area" value="50000">
+              </div>
+              <div class="form-group" style="margin:0">
+                <label class="form-label">Threshold (0=Otsu)</label>
+                <input type="number" class="form-control" id="threshold" value="0" min="0" max="255">
+              </div>
+            </div>
+            <button class="btn btn-primary" id="btn-droplets" onclick="runDroplets()" disabled>Extract Droplets</button>
+            <div id="droplets-result" class="mt-16"></div>
+          </div>
+
+          <!-- Step 5: 2D Convergence -->
+          <div class="card" id="panel-conv2d">
+            <div class="card-header">
+              <div class="card-title">Step 5 — 2D Convergence Analysis</div>
+              <span class="badge badge-muted">Module 4</span>
+            </div>
+            <button class="btn btn-primary" id="btn-conv2d" onclick="run2DConv()" disabled>Calculate 2D Convergence</button>
+            <div id="conv2d-result" class="mt-16"></div>
+          </div>
+
+          <!-- Step 6: 3D -->
+          <div class="card" id="panel-3d">
+            <div class="card-header">
+              <div class="card-title">Step 6 — 3D Point of Origin</div>
+              <span class="badge badge-muted">Module 4</span>
+            </div>
+            <button class="btn btn-primary" id="btn-3d" onclick="run3D()" disabled>Resolve 3D Origin</button>
+            <div id="rec3d-result" class="mt-16"></div>
+          </div>
+
+          <!-- Step 7: Report -->
+          <div class="card" id="panel-report">
+            <div class="card-header">
+              <div class="card-title">Step 7 — Generate Report</div>
+            </div>
+            <button class="btn btn-success" id="btn-report" onclick="generateReport()" disabled>Generate Report</button>
+            <div id="report-result" class="mt-16"></div>
+          </div>
+        </div>
+
+        <!-- Right: Image workspace -->
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="card" style="position:sticky;top:76px">
+            <div class="card-title" style="margin-bottom:12px">Image Workspace</div>
+            <div class="tabs" data-tabs>
+              <button class="tab-btn active" data-tab="ws-original">Original</button>
+              <button class="tab-btn" data-tab="ws-annotated">Annotated</button>
+              <button class="tab-btn" data-tab="ws-thresh">Threshold</button>
+            </div>
+            <div id="ws-original" class="tab-panel active">
+              <div class="img-panel" style="min-height:200px;display:flex;align-items:center;justify-content:center">
+                <div id="ws-orig-content" class="text-muted text-sm">No image uploaded</div>
+              </div>
+            </div>
+            <div id="ws-annotated" class="tab-panel">
+              <div class="img-panel" style="min-height:200px;display:flex;align-items:center;justify-content:center">
+                <div id="ws-ann-content" class="text-muted text-sm">Run droplet extraction first</div>
+              </div>
+            </div>
+            <div id="ws-thresh" class="tab-panel">
+              <div class="img-panel" style="min-height:200px;display:flex;align-items:center;justify-content:center">
+                <div id="ws-thresh-content" class="text-muted text-sm">Run droplet extraction first</div>
+              </div>
+            </div>
+
+            <!-- Progress -->
+            <div class="mt-16">
+              <div class="d-flex justify-between mb-8 text-sm">
+                <span class="text-secondary">Pipeline Progress</span>
+                <span id="progress-pct" class="text-accent">0%</span>
+              </div>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar-fill" id="progress-bar" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+<script src="js/main.js"></script>
+<script>
+let currentCase = null;
+let uploadedFile = null;
+let uploadedName = null;
+let dropletData = [];
+let conv2dResult = null;
+let step = 1;
+
+// ── Init ────────────────────────────────────────────────────────────────
+async function init() {
+  // Load cases into dropdown
+  try {
+    const data = await API.get('/api/cases');
+    const sel = document.getElementById('case-select');
+    data.cases.forEach(c => {
+      const o = document.createElement('option');
+      o.value = c.id; o.textContent = c.name;
+      sel.appendChild(o);
+    });
+    // Auto-select from URL or storage
+    const params = new URLSearchParams(location.search);
+    const cid = params.get('case') || Store.getCase()?.id;
+    if (cid) { sel.value = cid; selectCase(cid, data.cases); }
+  } catch {}
+  initTabs(document.querySelector('[data-tabs]'));
+}
+
+function selectCase(id, cases) {
+  if (!id) { currentCase = null; return; }
+  const params = new URLSearchParams(location.search);
+  // Find from loaded list or fetch
+  API.get(`/api/cases/${id}`).then(c => {
+    currentCase = c;
+    Store.setCase(c);
+    document.getElementById('case-title').textContent = `Case: ${c.name}`;
+  }).catch(() => {});
+}
+
+// ── Image ────────────────────────────────────────────────────────────────
+function previewImage(input) {
+  if (!input.files[0]) return;
+  uploadedFile = input.files[0];
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('img-preview').src = e.target.result;
+    document.getElementById('img-preview-wrap').classList.remove('hidden');
+    document.getElementById('ws-orig-content').innerHTML = `<img src="${e.target.result}" style="width:100%;border-radius:6px">`;
+  };
+  reader.readAsDataURL(uploadedFile);
+}
+
+function clearImage() {
+  uploadedFile = null; uploadedName = null;
+  document.getElementById('img-file').value = '';
+  document.getElementById('img-preview-wrap').classList.add('hidden');
+}
+
+async function uploadImage() {
+  if (!uploadedFile) { toast('Select an image first.', 'warning'); return; }
+  if (!currentCase) { toast('Select a case first.', 'warning'); return; }
+  const fd = new FormData();
+  fd.append('file', uploadedFile);
+  fd.append('case_id', currentCase.id);
+  try {
+    const r = await API.post('/api/upload', fd, true);
+    uploadedName = r.filename;
+    toast(`Image "${uploadedName}" uploaded!`, 'success');
+    document.getElementById('upload-status').innerHTML = `<span class="badge badge-success">✓ ${uploadedName}</span>`;
+    document.getElementById('btn-classify').disabled = false;
+    document.getElementById('btn-droplets').disabled = false;
+    setStep(2);
+    setProgress(14);
+  } catch(e) { toast(e.message || e.error || 'Upload failed', 'error'); }
+}
+
+// ── Classify ────────────────────────────────────────────────────────────
+async function runClassify() {
+  if (!uploadedName || !currentCase) { toast('Upload image and select case first.', 'warning'); return; }
+  const fd = new FormData();
+  fd.append('image_name', uploadedName);
+  fd.append('case_id', currentCase.id);
+  document.getElementById('classify-result').innerHTML = `<div class="d-flex align-center gap-8"><div class="spinner"></div> Running classification…</div>`;
+  try {
+    const r = await API.post('/api/classify', fd, true);
+    Store.setAnalysis('classification', r);
+    renderClassifyResult(r);
+    setStep(3); setProgress(28);
+    toast('Classification complete!', 'success');
+  } catch(e) {
+    const msg = e.message || e.error || 'Classification failed';
+    if (e.error === 'model_unavailable') {
+      document.getElementById('classify-result').innerHTML = `
+        <div class="alert alert-warning">
+          <span class="alert-icon"></span>
+          <div><strong>Model Not Trained</strong><br>
+          ${e.message}<br>
+          <a href="training.html" class="btn btn-warning btn-sm mt-8">Go to Training →</a></div>
+        </div>`;
+    } else {
+      document.getElementById('classify-result').innerHTML = `<div class="alert alert-danger"><span class="alert-icon">✕</span>${msg}</div>`;
+    }
+    toast(msg, 'error');
+  }
+}
+
+function renderClassifyResult(r) {
+  const s = r.spatter; const v = r.velocity;
+  document.getElementById('classify-result').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="result-panel">
+        <div class="result-label">Spatter Type (AI Prediction)</div>
+        <div class="result-value" style="font-size:15px">${s.predicted_type}</div>
+        <div class="result-conf">${fmtPct(s.confidence)} confidence</div>
+        <div class="result-disclaimer">${s.label}</div>
+      </div>
+      <div class="result-panel">
+        <div class="result-label">Impact Velocity (Model Classification)</div>
+        <div class="result-value" style="font-size:15px">${v.category}</div>
+        <div class="result-conf">${fmtPct(v.confidence)} confidence</div>
+        <div class="result-disclaimer">${v.label}</div>
+      </div>
+    </div>
+    <div class="mt-12">
+      <div class="text-sm text-muted mb-8">Top Predictions (Spatter)</div>
+      <div id="classify-conf-bars"></div>
+    </div>
+  `;
+  renderConfBars(document.getElementById('classify-conf-bars'), s.all_probabilities);
+}
+
+// ── Droplets ────────────────────────────────────────────────────────────
+async function runDroplets() {
+  if (!uploadedName || !currentCase) { toast('Upload image and select case first.', 'warning'); return; }
+  const fd = new FormData();
+  fd.append('image_name', uploadedName);
+  fd.append('case_id', currentCase.id);
+  fd.append('min_area', document.getElementById('min-area').value);
+  fd.append('max_area', document.getElementById('max-area').value);
+  fd.append('threshold', document.getElementById('threshold').value);
+  document.getElementById('droplets-result').innerHTML = `<div class="d-flex align-center gap-8"><div class="spinner"></div> Extracting droplets…</div>`;
+  try {
+    const r = await API.post('/api/droplets/extract', fd, true);
+    dropletData = r.droplets || [];
+    Store.setAnalysis('droplets', r);
+
+    // Update annotated image
+    if (r.annotated_image) {
+      document.getElementById('ws-ann-content').innerHTML = `<img src="${r.annotated_image}" style="width:100%;border-radius:6px">`;
+    }
+    if (r.threshold_image) {
+      document.getElementById('ws-thresh-content').innerHTML = `<img src="${r.threshold_image}" style="width:100%;border-radius:6px">`;
+    }
+
+    renderDropletResult(r);
+    document.getElementById('btn-conv2d').disabled = false;
+    setStep(4); setProgress(57);
+    toast(`${r.droplets.length} droplets detected!`, 'success');
+  } catch(e) {
+    document.getElementById('droplets-result').innerHTML = `<div class="alert alert-danger"><span class="alert-icon">✕</span>${e.message || e.error || 'Extraction failed'}</div>`;
+    toast(e.message || 'Extraction failed', 'error');
+  }
+}
+
+function renderDropletResult(r) {
+  const s = r.summary;
+  document.getElementById('droplets-result').innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px">
+      <div class="result-panel"><div class="result-label">Droplets</div><div class="result-value">${s.count}</div></div>
+      <div class="result-panel"><div class="result-label">Avg. Angle</div><div class="result-value">${fmtNum(s.avg_angle)}°</div></div>
+      <div class="result-panel"><div class="result-label">Valid Angles</div><div class="result-value">${s.valid_angles}</div></div>
+    </div>
+    <div style="max-height:200px;overflow-y:auto" class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>X</th><th>Y</th><th>Major</th><th>Minor</th><th>Angle</th><th>Valid</th></tr></thead>
+        <tbody>${r.droplets.slice(0,20).map(d => `
+          <tr>
+            <td>#${d.id}</td>
+            <td class="td-mono">${fmtNum(d.cx,0)}</td>
+            <td class="td-mono">${fmtNum(d.cy,0)}</td>
+            <td class="td-mono">${fmtNum(d.major_axis)}</td>
+            <td class="td-mono">${fmtNum(d.minor_axis)}</td>
+            <td class="td-mono">${d.angle_valid ? fmtNum(d.impact_angle)+'°' : 'N/A'}</td>
+            <td>${d.angle_valid ? '✓' : '<span class="text-warning"></span>'}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+    ${r.droplets.length > 20 ? `<div class="text-muted text-sm mt-8">Showing 20 of ${r.droplets.length} droplets. <a href="droplets.html">View all →</a></div>` : ''}
+    <div class="text-muted text-xs mt-8 font-mono">Computer Vision Measurement — accuracy depends on image quality and calibration.</div>
+  `;
+}
+
+// ── 2D Convergence ──────────────────────────────────────────────────────
+async function run2DConv() {
+  if (!dropletData.length) { toast('Run droplet extraction first.', 'warning'); return; }
+  document.getElementById('conv2d-result').innerHTML = `<div class="d-flex align-center gap-8"><div class="spinner"></div> Computing 2D convergence…</div>`;
+  try {
+    const r = await API.post('/api/convergence/2d', {
+      droplets: dropletData,
+      case_id: currentCase?.id || '',
+      image_name: uploadedName || '',
+    });
+    conv2dResult = r;
+    Store.setAnalysis('convergence_2d', r);
+    if (r.status === 'success') {
+      document.getElementById('conv2d-result').innerHTML = `
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+          <div class="result-panel"><div class="result-label">Convergence X</div><div class="result-value">${fmtNum(r.convergence_x)} px</div></div>
+          <div class="result-panel"><div class="result-label">Convergence Y</div><div class="result-value">${fmtNum(r.convergence_y)} px</div></div>
+          <div class="result-panel"><div class="result-label">RMS Error</div><div class="result-value">${fmtNum(r.error_px)} px</div></div>
+        </div>
+        <div class="text-muted text-xs mt-8">${r.disclaimer}</div>
+      `;
+      document.getElementById('btn-3d').disabled = false;
+      setStep(5); setProgress(71);
+      toast('2D convergence computed!', 'success');
+    } else {
+      document.getElementById('conv2d-result').innerHTML = `<div class="alert alert-warning"><span class="alert-icon"></span>${r.message}</div>`;
+      toast(r.message, 'warning');
+    }
+  } catch(e) {
+    document.getElementById('conv2d-result').innerHTML = `<div class="alert alert-danger"><span class="alert-icon">✕</span>${e.message || e.error}</div>`;
+    toast(e.message || 'Convergence failed', 'error');
+  }
+}
+
+// ── 3D ──────────────────────────────────────────────────────────────────
+async function run3D() {
+  if (!conv2dResult || conv2dResult.status !== 'success') { toast('Complete 2D convergence first.', 'warning'); return; }
+  document.getElementById('rec3d-result').innerHTML = `<div class="d-flex align-center gap-8"><div class="spinner"></div> Resolving 3D origin…</div>`;
+  try {
+    const r = await API.post('/api/reconstruction/3d', {
+      droplets: dropletData,
+      convergence_x: conv2dResult.convergence_x,
+      convergence_y: conv2dResult.convergence_y,
+      case_id: currentCase?.id || '',
+      image_name: uploadedName || '',
+    });
+    Store.setAnalysis('reconstruction_3d', r);
+    if (r.status === 'success') {
+      document.getElementById('rec3d-result').innerHTML = `
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px">
+          <div class="result-panel"><div class="result-label">X</div><div class="result-value">${fmtNum(r.x)}</div></div>
+          <div class="result-panel"><div class="result-label">Y</div><div class="result-value">${fmtNum(r.y)}</div></div>
+          <div class="result-panel"><div class="result-label">Z (Height)</div><div class="result-value">${fmtNum(r.z)}</div></div>
+          <div class="result-panel"><div class="result-label">Error</div><div class="result-value">${fmtNum(r.error_units)}</div></div>
+        </div>
+        <div class="text-muted text-xs mt-8">${r.disclaimer}</div>
+        <div class="mt-8"><a href="reconstruction.html" class="btn btn-primary btn-sm">View 3D Scene →</a></div>
+      `;
+      document.getElementById('btn-report').disabled = false;
+      setStep(6); setProgress(85);
+      toast('3D origin resolved!', 'success');
+    } else {
+      document.getElementById('rec3d-result').innerHTML = `<div class="alert alert-warning"><span class="alert-icon"></span>${r.message}</div>`;
+      toast(r.message, 'warning');
+    }
+  } catch(e) {
+    document.getElementById('rec3d-result').innerHTML = `<div class="alert alert-danger"><span class="alert-icon">✕</span>${e.message || e.error}</div>`;
+    toast(e.message || '3D resolution failed', 'error');
+  }
+}
+
+// ── Report ───────────────────────────────────────────────────────────────
+async function generateReport() {
+  if (!currentCase) { toast('Select a case first.', 'warning'); return; }
+  document.getElementById('report-result').innerHTML = `<div class="d-flex align-center gap-8"><div class="spinner"></div> Generating report…</div>`;
+  try {
+    const r = await API.post('/api/report/generate', { case_id: currentCase.id });
+    document.getElementById('report-result').innerHTML = `
+      <div class="alert alert-success"><span class="alert-icon">✓</span>Report generated successfully!</div>
+      <div class="d-flex gap-8 mt-8">
+        <a href="/api/report/download/${currentCase.id}?format=json" class="btn btn-secondary btn-sm">⬇ JSON</a>
+        ${r.pdf_available ? `<a href="/api/report/download/${currentCase.id}?format=pdf" class="btn btn-primary btn-sm">⬇ PDF Report</a>` : ''}
+        <a href="reports.html" class="btn btn-secondary btn-sm">View Reports →</a>
+      </div>
+    `;
+    setProgress(100); setStep(7);
+    toast('Report generated!', 'success');
+  } catch(e) {
+    document.getElementById('report-result').innerHTML = `<div class="alert alert-danger"><span class="alert-icon">✕</span>${e.message || e.error}</div>`;
+    toast(e.message || 'Report generation failed', 'error');
+  }
+}
+
+// ── Helpers ──────────────────────────────────────────────────────────────
+function setStep(n) {
+  step = n;
+  document.querySelectorAll('.step').forEach(el => {
+    const s = parseInt(el.dataset.step);
+    el.classList.remove('active', 'done');
+    if (s < n) el.classList.add('done');
+    if (s === n) el.classList.add('active');
+  });
+}
+function setProgress(pct) {
+  document.getElementById('progress-bar').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = pct + '%';
+}
+
+init();
+</script>
+</body>
+</html>
